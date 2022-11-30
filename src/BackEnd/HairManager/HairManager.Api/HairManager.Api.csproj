@@ -10,4 +10,11 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\HairManager.Comunication\HairManager.Comunication.csproj" />
+    <ProjectReference Include="..\..\Shared\HairManager.Exceptions\HairManager.Exceptions.csproj" />
+    <ProjectReference Include="..\HairManager.Application\HairManager.Application.csproj" />
+    <ProjectReference Include="..\HairManager.Infra\HairManager.Infra.csproj" />
+  </ItemGroup>
+
 </Project>
