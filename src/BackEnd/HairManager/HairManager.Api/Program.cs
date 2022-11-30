@@ -1,11 +1,14 @@
+using HairManager.Domain.Extension;
+using HairManager.Infra;
+using HairManager.Infra.Migrations;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddRepository(builder.Configuration);
 
 var app = builder.Build();
 
@@ -22,4 +25,18 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+AtualizarBaseDeDados();
+
 app.Run();
+
+void AtualizarBaseDeDados()
+{
+    var conexao = builder.Configuration.GetConnection();
+    var nomeDatabase = builder.Configuration.GetDatabaseName();
+
+    Database.CriarDatabase(conexao, nomeDatabase);
+
+    //app.MigrateBancoDeDados();
+}
+
+public partial class Program { }
