@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HairManager.Domain.Repositories;
 
-namespace HairManager.Infra.AcessoRepositories.Repositories
+namespace HairManager.Infra.AcessoRepositories.Repositories;
+
+public class UsuarioRepository : IUsuarioWriteOnlyRepository, IUsuarioReadOnlyRepository
 {
-    internal class UsuarioRepository
-    {
-    }
+
 }
