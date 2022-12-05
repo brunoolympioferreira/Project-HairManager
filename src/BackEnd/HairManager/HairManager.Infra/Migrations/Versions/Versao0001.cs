@@ -9,7 +9,7 @@ public class Versao0001 : Migration
 
     public override void Up()
     {
-        var table = VersaoBase.InserirColunasPadrao(Create.Table("Usuario"));
+        var table = VersaoBase.InserirColunasPadrao(Create.Table("Usuarios"));
 
         table
             .WithColumn("Nome").AsString(100).NotNullable()

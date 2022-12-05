@@ -36,7 +36,7 @@ void AtualizarBaseDeDados()
 
     Database.CriarDatabase(conexao, nomeDatabase);
 
-    //app.MigrateBancoDeDados();
+    app.MigrateBancoDeDados();
 }
 
 public partial class Program { }
