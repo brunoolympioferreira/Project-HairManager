@@ -1,3 +1,6 @@
+using HairManager.Api.Filtros;
+using HairManager.Application;
+using HairManager.Application.Utils.Automapper;
 using HairManager.Domain.Extension;
 using HairManager.Infra;
 using HairManager.Infra.Migrations;
@@ -9,6 +12,14 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddRepository(builder.Configuration);
+builder.Services.AddApplication(builder.Configuration);
+
+builder.Services.AddMvc(options => options.Filters.Add(typeof(FiltroDasExceptions)));
+
+builder.Services.AddScoped(provider => new AutoMapper.MapperConfiguration(cfg =>
+{
+    cfg.AddProfile(new AutomapperConfiguration());
+}).CreateMapper());
 
 var app = builder.Build();
 
