@@ -12,6 +12,9 @@ public class RegistrarUsuarioValidator : AbstractValidator<RequestRegistrarUsuar
 		RuleFor(c => c.Senha).NotEmpty().WithMessage(ResourceMensagensDeErro.SENHA_USUARIO_EMBRANCO);
 		RuleFor(c => c.ConfirmeSenha).NotEmpty().WithMessage(ResourceMensagensDeErro.CONFIRME_SENHA_USUARIO_EMBRANCO);
 		RuleFor(c => c.Status).NotNull().WithMessage(ResourceMensagensDeErro.STATUS_USUARIO_INVALIDO);
+        RuleFor(c => c.Senha)
+            .Equal(c => c.ConfirmeSenha)
+            .When(c => !string.IsNullOrWhiteSpace(c.Senha)).WithMessage(ResourceMensagensDeErro.SENHAS_NAO_CONFEREM);
 
         When(c => !string.IsNullOrWhiteSpace(c.Email), () =>
         {
