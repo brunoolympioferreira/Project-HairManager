@@ -8,8 +8,8 @@ namespace HairManager.Infra.Migrations
         {
             return table
                 .WithColumn("Id").AsInt64().PrimaryKey().Identity()
-                .WithColumn("Created_At").AsDateTime().NotNullable()
-                .WithColumn("Updated_At").AsDateTime().NotNullable();
+                .WithColumn("CreatedAt").AsDateTime().NotNullable()
+                .WithColumn("UpdatedAt").AsDateTime().NotNullable();
         }
     }
 }

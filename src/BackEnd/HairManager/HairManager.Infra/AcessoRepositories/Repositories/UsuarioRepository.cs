@@ -17,12 +17,6 @@ public class UsuarioRepository : IUsuarioWriteOnlyRepository, IUsuarioReadOnlyRe
     {
         await _context.Usuarios.AddAsync(usuario);
     }
-
-    public async Task<bool> ConferirSenhas(string senha, string confirmeSenha)
-    {
-        return await _context.Usuarios.AnyAsync(c => c.Senha.Equals(c.ConfirmeSenha));
-    }
-
     public async Task<bool> ExisteUsuarioComEmail(string email)
     {
         return await _context.Usuarios.AnyAsync(c => c.Email.Equals(email));

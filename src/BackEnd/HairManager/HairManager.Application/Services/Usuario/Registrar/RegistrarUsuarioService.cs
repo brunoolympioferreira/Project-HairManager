@@ -57,12 +57,6 @@ public class RegistrarUsuarioService : IRegistrarUsuarioService
         var validator = new RegistrarUsuarioValidator();
         var result = validator.Validate(request);
 
-        var conferirSenhas = await _usuarioReadOnlyRepository.ConferirSenhas(request.Senha, request.ConfirmeSenha);
-        if (conferirSenhas)
-        {
-            result.Errors.Add(new ValidationFailure("senhas", ResourceMensagensDeErro.SENHAS_NAO_CONFEREM));
-        }
-
         var existeUsuarioComEmail = await _usuarioReadOnlyRepository.ExisteUsuarioComEmail(request.Email);
         if (existeUsuarioComEmail)
         {
