@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CONFIRME_SENHA_USUARIO_EMBRANCO" xml:space="preserve">
+    <value>A confirmação de senha deve ser informada.</value>
+  </data>
   <data name="EMAIL_JA_CADASTRADO" xml:space="preserve">
     <value>O e-mail informado já está registrado na base de dados.</value>
   </data>
@@ -131,6 +134,9 @@
   </data>
   <data name="NOME_USUARIO_EMBRANCO" xml:space="preserve">
     <value>O nome do usuário deve ser informado.</value>
+  </data>
+  <data name="SENHAS_NAO_CONFEREM" xml:space="preserve">
+    <value>As senhas informadas não conferem.</value>
   </data>
   <data name="SENHA_USUARIO_EMBRANCO" xml:space="preserve">
     <value>A senha do usuário deve ser informada.</value>

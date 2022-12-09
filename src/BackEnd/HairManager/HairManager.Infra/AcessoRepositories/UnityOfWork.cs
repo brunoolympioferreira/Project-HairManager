@@ -1,4 +1,6 @@
-﻿namespace HairManager.Infra.AcessoRepositories;
+﻿using HairManager.Domain.Repositories;
+
+namespace HairManager.Infra.AcessoRepositories;
 
 public sealed class UnityOfWork : IDisposable, IUnityOfWork
 {

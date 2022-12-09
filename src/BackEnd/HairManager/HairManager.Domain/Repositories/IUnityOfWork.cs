@@ -1,4 +1,4 @@
-﻿namespace HairManager.Infra.AcessoRepositories;
+﻿namespace HairManager.Domain.Repositories;
 
 public interface IUnityOfWork
 {
