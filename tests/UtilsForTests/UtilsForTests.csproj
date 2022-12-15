@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.0" />
     <PackageReference Include="Bogus" Version="34.0.2" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
     <PackageReference Include="Moq" Version="4.18.3" />
@@ -26,6 +27,7 @@
     <ProjectReference Include="..\..\src\BackEnd\HairManager\HairManager.Application\HairManager.Application.csproj" />
     <ProjectReference Include="..\..\src\BackEnd\HairManager\HairManager.Domain\HairManager.Domain.csproj" />
     <ProjectReference Include="..\..\src\BackEnd\Shared\HairManager.Comunication\HairManager.Comunication.csproj" />
+    <ProjectReference Include="..\..\src\BackEnd\Shared\HairManager.Exceptions\HairManager.Exceptions.csproj" />
   </ItemGroup>
 
 </Project>

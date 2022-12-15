@@ -3,6 +3,7 @@ using HairManager.Application;
 using HairManager.Application.Utils.Automapper;
 using HairManager.Domain.Extension;
 using HairManager.Infra;
+using HairManager.Infra.AcessoRepositories;
 using HairManager.Infra.Migrations;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -44,12 +45,20 @@ app.Run();
 
 void AtualizarBaseDeDados()
 {
-    var conexao = builder.Configuration.GetConnection();
-    var nomeDatabase = builder.Configuration.GetDatabaseName();
+    using var serviceScope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope();
+    using var context = serviceScope.ServiceProvider.GetService<HairManagerContext>();
 
-    Database.CriarDatabase(conexao, nomeDatabase);
+    bool? databaseInMemory = context?.Database?.ProviderName?.Equals("Microsoft.EntityFrameworkCore.InMemory");
 
-    app.MigrateBancoDeDados();
+    if (!databaseInMemory.HasValue || !databaseInMemory.Value)
+    {
+        var conexao = builder.Configuration.GetConnection();
+        var nomeDatabase = builder.Configuration.GetDatabaseName();
+
+        Database.CriarDatabase(conexao, nomeDatabase);
+
+        app.MigrateBancoDeDados();
+    }
 }
 
 public partial class Program { }

@@ -6,6 +6,7 @@ using HairManager.Infra.AcessoRepositories.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Protocols;
 using System.Reflection;
 
 namespace HairManager.Infra;
@@ -23,21 +24,31 @@ public static class Bootstrapper
 
     private static void AddFluentMigrator(IServiceCollection services, IConfiguration configuration)
     {
-        services.AddFluentMigratorCore().ConfigureRunner(c =>
+        _ = bool.TryParse(configuration.GetSection("Configuracoes:BancoDeDadosInMemory").Value, out bool bancoDeDadosInMemory);
+
+        if (!bancoDeDadosInMemory)
+        {
+            services.AddFluentMigratorCore().ConfigureRunner(c =>
             c.AddMySql5()
             .WithGlobalConnectionString(configuration.GetConnectionComplete())
             .ScanIn(Assembly.Load("HairManager.Infra")).For.All());
+        }        
     }
 
     private static void AddContexto(IServiceCollection services, IConfiguration configuration)
     {
-        var versaoServidor = new MySqlServerVersion(new Version(8, 0, 30));
-        var connectionString = configuration.GetConnectionComplete();
+        _ = bool.TryParse(configuration.GetSection("Configuracoes:BancoDeDadosInMemory").Value, out bool bancoDeDadosInMemory);
 
-        services.AddDbContext<HairManagerContext>(options =>
+        if (!bancoDeDadosInMemory)
         {
-            options.UseMySql(connectionString, versaoServidor);
-        });
+            var versaoServidor = new MySqlServerVersion(new Version(8, 0, 30));
+            var connectionString = configuration.GetConnectionComplete();
+
+            services.AddDbContext<HairManagerContext>(options =>
+            {
+                options.UseMySql(connectionString, versaoServidor);
+            });
+        }   
     }
 
     private static void AddUnityOfWork(IServiceCollection services)
