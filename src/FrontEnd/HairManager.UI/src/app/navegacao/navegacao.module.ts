@@ -8,13 +8,15 @@ import { RouterModule } from '@angular/router';
 //Componentes
 import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
+import { HomeComponent } from './home/home.component';
 
 
 
 @NgModule({
   declarations: [
     MenuComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,8 @@ import { FooterComponent } from './footer/footer.component';
   ],
   exports: [
     MenuComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent
   ]
 })
 export class NavegacaoModule { }
