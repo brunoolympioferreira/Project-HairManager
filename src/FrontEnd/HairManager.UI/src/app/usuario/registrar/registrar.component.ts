@@ -2,12 +2,14 @@
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChildren } from '@angular/core';
 import { FormControlName } from '@angular/forms';
+import { Router } from '@angular/router';
 //Utils
-import { ValidationMessages } from './../../utils/generic-form-validation';
 import { FormBaseComponent } from 'src/app/base/form-base-component';
 import { CustomValidators } from '@narik/custom-validators';
-//Models
+import { ToastrService } from 'ngx-toastr';
+//Models e Services
 import { Usuario } from '../models/usuario';
+import { UsuarioService } from '../services/usuario.service';
 
 @Component({
   selector: 'app-registrar',
@@ -24,8 +26,10 @@ export class RegistrarComponent extends FormBaseComponent implements OnInit, Aft
   usuario: Usuario
 
   constructor(
-    private fb: FormBuilder
-  ) {
+    private fb: FormBuilder,
+    private usuarioService: UsuarioService,
+    private router: Router,
+    private toastr: ToastrService) {
 
     super();
 
@@ -60,7 +64,8 @@ export class RegistrarComponent extends FormBaseComponent implements OnInit, Aft
       nome: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       senha: password,
-      confirmeSenha: confirmPassword
+      confirmeSenha: confirmPassword,
+      status: ['', [Validators.required]]
     });
   };
 
@@ -70,14 +75,34 @@ export class RegistrarComponent extends FormBaseComponent implements OnInit, Aft
 
 
   registrarConta() {
+    if (this.registroForm.dirty && this.registroForm.valid) {
+      this.usuario = Object.assign({}, this.usuario, this.registroForm.value);
 
+      this.usuarioService.registrarUsuario(this.usuario)
+        .subscribe(
+          sucesso => { this.processarSucesso(sucesso) },
+          falha => { this.processarFalha(falha) }
+        );
+    }
   }
 
-  processarSucesso() {
+  processarSucesso(response: any) {
+    this.registroForm.reset();
+    this.errors = [];
 
+    this.usuarioService.LocalStorage.salvarDadosLocaisUsuario(response);
+
+    let toast = this.toastr.success('Registro realizado com sucesso!', 'Bem vindo!!!');
+
+    if (toast) {
+      toast.onHidden.subscribe(() => {
+        this.router.navigate(['/home'])
+      });
+    }
   }
 
-  processarFalha() {
-
+  processarFalha(fail: any) {
+    this.errors = fail.error.errors;
+    this.toastr.error('Ocurreu um erro!', 'Opa :(');
   }
 }
