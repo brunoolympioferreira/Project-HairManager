@@ -30,7 +30,7 @@
           <label class="col-md-3 control-label" for="">Senha:</label>
           <div>
             <input class="form-control" type="password" formControlName="senha" id="senha"
-              [ngClass]="{'is-invalid': displayMessage.senha }">
+              [ngClass]="{'is-invalid': displayMessage.senha }" placeholder="Digite uma senha entre 6 e 15 caracteres">
             <span class="text-danger" *ngIf="displayMessage.senha">
               <p class="mb-1" [innerHTML]="displayMessage.senha"></p>
             </span>
@@ -41,7 +41,7 @@
           <label class="col-md-4 control-label" for="">Confirme a senha:</label>
           <div>
             <input class="form-control" type="password" formControlName="confirmeSenha" id="confirmeSenha"
-              [ngClass]="{'is-invalid': displayMessage.confirmeSenha }">
+              [ngClass]="{'is-invalid': displayMessage.confirmeSenha }" placeholder="Confirme a senha digitada">
             <span class="text-danger" *ngIf="displayMessage.confirmeSenha">
               <p class="mb-1" [innerHTML]="displayMessage.confirmeSenha"></p>
             </span>

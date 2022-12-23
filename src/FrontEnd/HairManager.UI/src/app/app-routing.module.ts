@@ -1,3 +1,4 @@
+import { NotFoundComponent } from './navegacao/not-found/not-found.component';
 //Angular
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -16,6 +17,9 @@ const routes: Routes = [
     loadChildren: () => import('./usuario/usuario.module')
       .then(m => m.UsuarioModule)
   },
+
+
+  { path: 'nao-encontrado', component: NotFoundComponent }
 ];
 
 @NgModule({
