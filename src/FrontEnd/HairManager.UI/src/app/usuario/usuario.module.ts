@@ -11,6 +11,7 @@ import { NarikCustomValidatorsModule } from '@narik/custom-validators';
 //Components
 import { UsuarioAppComponent } from './usuario.app.component';
 import { RegistrarComponent } from './registrar/registrar.component';
+import { UsuarioService } from './services/usuario.service';
 
 
 
@@ -28,6 +29,8 @@ import { RegistrarComponent } from './registrar/registrar.component';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: []
+  providers: [
+    UsuarioService
+  ]
 })
 export class UsuarioModule { }
