@@ -5,6 +5,9 @@ using HairManager.Domain.Extension;
 using HairManager.Infra;
 using HairManager.Infra.AcessoRepositories;
 using HairManager.Infra.Migrations;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Swagger;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +15,19 @@ builder.Services.AddRouting(option => option.LowercaseUrls = true);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Version = "v1",
+        Title = "Hair Manager API",
+        Description = "CRM para gerenciamento de um salão de beleza"
+    });
+
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    options.IncludeXmlComments(xmlPath);
+});
 
 builder.Services.AddRepository(builder.Configuration);
 builder.Services.AddApplication(builder.Configuration);

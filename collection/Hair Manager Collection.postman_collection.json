@@ -44,6 +44,32 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"usertest@email.com\",\r\n  \"senha\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URLBASE}}/login",
+					"host": [
+						"{{URLBASE}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

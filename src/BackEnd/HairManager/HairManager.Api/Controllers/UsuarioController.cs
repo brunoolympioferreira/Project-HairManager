@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace HairManager.Api.Controllers;
 [Route("api/[controller]")]
 [ApiController]
-public class UsuarioController : ControllerBase
+public class UsuarioController : HairManagerController
 {
     [HttpPost]
     [ProducesResponseType(typeof(ResponseUsuarioRegistradoDTO), StatusCodes.Status201Created)]
