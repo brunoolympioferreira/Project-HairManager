@@ -1,4 +1,5 @@
-﻿using HairManager.Application.Services.Usuario.Registrar;
+﻿using HairManager.Application.Services.Usuario.Login;
+using HairManager.Application.Services.Usuario.Registrar;
 using HairManager.Application.Utils.Criptografia;
 using HairManager.Application.Utils.Token;
 using Microsoft.Extensions.Configuration;
@@ -12,8 +13,7 @@ public static class Bootstrapper
         AdicionarChaveAdiconalSenha(services, configuration);
         AdicionarChaveAdiconalConfirmeSenha(services, configuration);
         AdicionarTokenJWT(services, configuration);
-
-        services.AddScoped<IRegistrarUsuarioService, RegistrarUsuarioService>();
+        AdicionarServices(services);
     }
 
     private static void AdicionarChaveAdiconalSenha(IServiceCollection services, IConfiguration configuration)
@@ -36,5 +36,11 @@ public static class Bootstrapper
         var sectionKey = configuration.GetRequiredSection("Configuracoes:ChaveToken");
 
         services.AddScoped(option => new TokenController(int.Parse(sectionTempoDeVida.Value), sectionKey.Value));
+    }
+
+    private static void AdicionarServices(IServiceCollection services)
+    {
+        services.AddScoped<IRegistrarUsuarioService, RegistrarUsuarioService>()
+            .AddScoped<ILoginService, LoginService>();
     }
 }
