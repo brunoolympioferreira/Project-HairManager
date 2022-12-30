@@ -1,4 +1,5 @@
-﻿using HairManager.Domain.Repositories;
+﻿using HairManager.Domain.Entities;
+using HairManager.Domain.Repositories;
 using Moq;
 
 namespace UtilsForTests.Repositories;
@@ -25,6 +26,13 @@ public class UsuarioReadOnlyRepositoryBuilder
     {
         if (!string.IsNullOrEmpty(email))
             _repository.Setup(i => i.ExisteUsuarioComEmail(email)).ReturnsAsync(true);
+
+        return this;
+    }
+
+    public UsuarioReadOnlyRepositoryBuilder RecuperarPorEmailSenha(Usuario usuario)
+    {
+        _repository.Setup(i => i.RecuperarUsuarioPorEmailESenha(usuario.Email, usuario.Senha)).ReturnsAsync(usuario);
 
         return this;
     }
