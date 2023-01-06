@@ -1,3 +1,4 @@
+import { UsuarioModule } from './../usuario/usuario.module';
 //Angular Imports
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -10,6 +11,7 @@ import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { MenuLoginComponent } from './menu-login/menu-login.component';
 
 
 
@@ -18,11 +20,13 @@ import { NotFoundComponent } from './not-found/not-found.component';
     MenuComponent,
     FooterComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    MenuLoginComponent,
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    UsuarioModule
   ],
   exports: [
     MenuComponent,

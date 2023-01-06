@@ -12,13 +12,15 @@ import { NarikCustomValidatorsModule } from '@narik/custom-validators';
 import { UsuarioAppComponent } from './usuario.app.component';
 import { RegistrarComponent } from './registrar/registrar.component';
 import { UsuarioService } from './services/usuario.service';
+import { LoginComponent } from './login/login.component';
 
 
 
 @NgModule({
   declarations: [
     UsuarioAppComponent,
-    RegistrarComponent
+    RegistrarComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
@@ -28,6 +30,9 @@ import { UsuarioService } from './services/usuario.service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+  ],
+  exports: [
+    LoginComponent
   ],
   providers: [
     UsuarioService
