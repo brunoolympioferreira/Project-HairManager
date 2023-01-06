@@ -19,7 +19,7 @@ public class ControllerBase : IClassFixture<HairManagerApplicationFactory<Progra
 
     protected async Task<HttpResponseMessage> PostRequest(string metodo, object body)
     {
-        var jsonString = JsonConvert.SerializeObject(body);
+        string jsonString = JsonConvert.SerializeObject(body);
 
         return await _client.PostAsync(metodo, new StringContent(jsonString, Encoding.UTF8, "application/json"));
     }
