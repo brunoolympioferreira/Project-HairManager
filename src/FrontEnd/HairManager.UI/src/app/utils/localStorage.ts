@@ -4,8 +4,8 @@ export class LocalStorageUtils {
   }
 
   public salvarDadosLocaisUsuario(response: any) {
-    this.salvarTokenUsuario(response.accessToken);
-    this.salvarUsuario(response.userToken);
+    this.salvarTokenUsuario(response.token);
+    //this.salvarUsuario(response.userToken);
   }
 
   public limparDadosLocaisUsuario() {
@@ -21,7 +21,7 @@ export class LocalStorageUtils {
     localStorage.setItem('hairManager.token', token);
   }
 
-  public salvarUsuario(user: string) {
-    localStorage.setItem('hairManager.user', JSON.stringify(user));
-  }
+  // public salvarUsuario(user: string) {
+  //   localStorage.setItem('hairManager.user', JSON.stringify(user));
+  // }
 }

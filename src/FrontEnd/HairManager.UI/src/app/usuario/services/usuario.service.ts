@@ -19,5 +19,4 @@ export class UsuarioService extends BaseService {
 
     return response;
   }
-
 }

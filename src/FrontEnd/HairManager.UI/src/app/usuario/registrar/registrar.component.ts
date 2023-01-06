@@ -67,7 +67,10 @@ export class RegistrarComponent extends FormBaseComponent implements OnInit, Aft
       confirmeSenha: confirmPassword,
       status: ['', [Validators.required]]
     });
-  };
+
+    this.registroForm.patchValue({ ativo: true })
+
+  }
 
   ngAfterViewInit(): void {
     super.configurarValidacaoFormularioBase(this.formInputElements, this.registroForm)
@@ -83,6 +86,7 @@ export class RegistrarComponent extends FormBaseComponent implements OnInit, Aft
           sucesso => { this.processarSucesso(sucesso) },
           falha => { this.processarFalha(falha) }
         );
+      console.log(this.usuario)
     }
   }
 
