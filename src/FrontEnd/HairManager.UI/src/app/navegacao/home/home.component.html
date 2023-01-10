@@ -1,7 +1,14 @@
 <div class="container mt-4">
   <div class="row full-height">
-    <div class="col-md-4 offset-md-1 align-self-center">
-      <app-login></app-login>
+    <div [ngSwitch]="usuarioLogado()" class="col-md-4 offset-md-1 align-self-center">
+      <div *ngSwitchCase="true">
+        <h6>Seja bem Vindo {{nome}}</h6>
+        <p>pensar em o que visualizar quando o usuario estiver logado</p>
+        <p>Profile? Mensagem de boas vindas?</p>
+      </div>
+      <div *ngSwitchCase="false">
+        <app-login></app-login>
+      </div>
     </div>
     <div class="col-md-6 col-12 full-height img-cover d-none d-md-block">
     </div>

@@ -1,11 +1,14 @@
 export class LocalStorageUtils {
-  public obterUsuario() {
-    return JSON.parse(localStorage.getItem('hairManager.user'));
+
+  public obterNomeUsuario() {
+    return JSON.parse(localStorage.getItem('hairManager.userName'));
   }
 
   public salvarDadosLocaisUsuario(response: any) {
     this.salvarTokenUsuario(response.token);
-    //this.salvarUsuario(response.userToken);
+    if (response.nome) {
+      this.salvarNomeUsuario(response.nome);
+    }
   }
 
   public limparDadosLocaisUsuario() {
@@ -21,7 +24,7 @@ export class LocalStorageUtils {
     localStorage.setItem('hairManager.token', token);
   }
 
-  // public salvarUsuario(user: string) {
-  //   localStorage.setItem('hairManager.user', JSON.stringify(user));
-  // }
+  public salvarNomeUsuario(userName: string) {
+    localStorage.setItem('hairManager.userName', JSON.stringify(userName));
+  }
 }
