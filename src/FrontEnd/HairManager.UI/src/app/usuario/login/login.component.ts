@@ -2,10 +2,13 @@
 import { Component, ElementRef, OnInit, ViewChildren } from '@angular/core';
 import { FormControlName, FormGroup } from '@angular/forms';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 //Utils
 import { FormBaseComponent } from 'src/app/base/form-base-component';
 import { Usuario } from '../models/usuario';
 import { CustomValidators } from '@narik/custom-validators';
+import { ToastrService } from 'ngx-toastr';
+import { UsuarioService } from './../services/usuario.service';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +26,10 @@ export class LoginComponent extends FormBaseComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-  ) {
+    private usuarioService: UsuarioService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private toastr: ToastrService) {
     super();
 
     this.validationMessages = {
@@ -38,10 +44,11 @@ export class LoginComponent extends FormBaseComponent implements OnInit {
     };
 
     super.configurarMensagensValidacaoBase(this.validationMessages);
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'];
   }
 
 
-  //this.returnUrl = this.route.snapshot.queryParams['returnUrl'];
+
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -55,15 +62,37 @@ export class LoginComponent extends FormBaseComponent implements OnInit {
   }
 
   login() {
+    if (this.loginForm.dirty && this.loginForm.valid) {
+      this.usuario = Object.assign({}, this.usuario, this.loginForm.value);
 
+      this.usuarioService.login(this.usuario)
+        .subscribe(
+          sucesso => { this.processarSucesso(sucesso) },
+          falha => { this.processarFalha(falha) }
+        );
+    }
   }
 
-  processarSucesso() {
+  processarSucesso(response: any) {
+    this.loginForm.reset();
+    this.errors = [];
 
+    this.usuarioService.LocalStorage.salvarDadosLocaisUsuario(response);
+
+    let toast = this.toastr.success('Login realizado com sucesso!', 'Bem vindo!');
+
+    if (toast) {
+      toast.onHidden.subscribe(() => {
+        this.returnUrl
+          ? this.router.navigate([this.returnUrl])
+          : this.router.navigate(['/home'])
+      })
+    }
   }
 
-  processarFalha() {
-
+  processarFalha(fail: any) {
+    this.errors = fail.error.errors;
+    this.toastr.error('Ocurreu um erro!', 'Opa :(');
   }
 
 }
