@@ -1,6 +1,6 @@
-import { Router } from '@angular/router';
 //Angular
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 //Utils
 import { LocalStorageUtils } from 'src/app/utils/localStorage';
