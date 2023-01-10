@@ -1,6 +1,7 @@
 export class LocalStorageUtils {
-  public obterUsuario() {
-    return JSON.parse(localStorage.getItem('hairManager.user'));
+
+  public obterNomeUsuario() {
+    return JSON.parse(localStorage.getItem('hairManager.userName'));
   }
 
   public salvarDadosLocaisUsuario(response: any) {

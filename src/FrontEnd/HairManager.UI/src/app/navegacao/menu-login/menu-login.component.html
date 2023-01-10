@@ -1,3 +1,13 @@
-<li class="nav-item">
-  <a class="nav-link" [routerLink]="['/usuario/registro']">Registre-se</a>
-</li>
+<ul [ngSwitch]="usuarioLogado()" class="navbar-nav">
+  <li *ngSwitchCase="false" class="nav-item">
+    <a class="nav-link" [routerLink]="['/usuario/login']">Registre-se</a>
+  </li>
+
+  <li *ngSwitchCase="true" class="nav-item">
+    <a class="nav-link text-dark" id="saudacaoUsuario" href="javascript:void(0)">{{ nome }}</a>
+  </li>
+  <li *ngSwitchCase="true" class="nav-item">
+    <a class="nav-link text-dark" href="javascript:void(0)" (click)="logout()">
+      Sair <span class="fas fa-sign-out-alt"></span></a>
+  </li>
+</ul>
