@@ -1,4 +1,6 @@
-﻿using HairManager.Application.Services.Usuario.Registrar;
+﻿using HairManager.Api.Filtros;
+using HairManager.Application.Services.Usuario.RecuperarPerfil;
+using HairManager.Application.Services.Usuario.Registrar;
 using HairManager.Comunication.Requests;
 using HairManager.Comunication.Responses;
 using Microsoft.AspNetCore.Mvc;
@@ -17,5 +19,15 @@ public class UsuarioController : HairManagerController
         var result = await service.Executar(request);
 
         return Created(string.Empty, result);
+    }
+
+    [HttpGet]
+    [ProducesResponseType(typeof(ResponsePerfilUsuarioDTO), StatusCodes.Status200OK)]
+    [ServiceFilter(typeof(UsuarioAutenticadoAttribute))]
+    public async Task<IActionResult> RecuperarPerfil([FromServices] IRecuperarPerfilService service)
+    {
+        var resultado = await service.Executar();
+
+        return Ok(resultado);
     }
 }

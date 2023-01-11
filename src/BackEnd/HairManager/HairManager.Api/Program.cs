@@ -13,8 +13,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddRouting(option => option.LowercaseUrls = true);
 
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddControllers();
+
 builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo
@@ -43,6 +47,8 @@ builder.Services.AddCors(policyBuilder =>
     policyBuilder.AddDefaultPolicy(policy =>
         policy.WithOrigins("*").AllowAnyHeader().AllowAnyHeader())
 );
+
+builder.Services.AddScoped<UsuarioAutenticadoAttribute>();
 
 var app = builder.Build();
 
