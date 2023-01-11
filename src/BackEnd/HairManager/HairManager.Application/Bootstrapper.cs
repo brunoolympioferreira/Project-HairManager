@@ -1,7 +1,9 @@
 ﻿using HairManager.Application.Services.Usuario.Login;
+using HairManager.Application.Services.Usuario.RecuperarPerfil;
 using HairManager.Application.Services.Usuario.Registrar;
 using HairManager.Application.Utils.Criptografia;
 using HairManager.Application.Utils.Token;
+using HairManager.Application.Utils.UsuarioLogado;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -14,6 +16,12 @@ public static class Bootstrapper
         AdicionarChaveAdiconalConfirmeSenha(services, configuration);
         AdicionarTokenJWT(services, configuration);
         AdicionarServices(services);
+        AdicionarUsuarioLogado(services);
+    }
+
+    private static void AdicionarUsuarioLogado(IServiceCollection services)
+    {
+        services.AddScoped<IUsuarioLogado, UsuarioLogado>();
     }
 
     private static void AdicionarChaveAdiconalSenha(IServiceCollection services, IConfiguration configuration)
@@ -40,7 +48,9 @@ public static class Bootstrapper
 
     private static void AdicionarServices(IServiceCollection services)
     {
-        services.AddScoped<IRegistrarUsuarioService, RegistrarUsuarioService>()
-            .AddScoped<ILoginService, LoginService>();
+        services
+            .AddScoped<IRegistrarUsuarioService, RegistrarUsuarioService>()
+            .AddScoped<ILoginService, LoginService>()
+            .AddScoped<IRecuperarPerfilService, RecuperarPerfilService>();
     }
 }
