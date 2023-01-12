@@ -2,9 +2,7 @@
   <div class="row full-height">
     <div [ngSwitch]="usuarioLogado()" class="col-md-4 offset-md-1 align-self-center">
       <div *ngSwitchCase="true">
-        <h6>Seja bem Vindo {{nome}}</h6>
-        <p>pensar em o que visualizar quando o usuario estiver logado</p>
-        <p>Profile? Mensagem de boas vindas?</p>
+        <app-recuperar-perfil></app-recuperar-perfil>
       </div>
       <div *ngSwitchCase="false">
         <app-login></app-login>

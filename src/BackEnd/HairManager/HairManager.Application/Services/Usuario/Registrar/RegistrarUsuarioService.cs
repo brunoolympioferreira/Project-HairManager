@@ -48,7 +48,8 @@ public class RegistrarUsuarioService : IRegistrarUsuarioService
 
         return new ResponseUsuarioRegistradoDTO
         {
-            Token = token
+            Token = token,
+            Nome = entity.Nome
         };
     }
 
