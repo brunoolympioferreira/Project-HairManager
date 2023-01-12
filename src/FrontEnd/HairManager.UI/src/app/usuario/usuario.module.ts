@@ -13,6 +13,7 @@ import { UsuarioAppComponent } from './usuario.app.component';
 import { RegistrarComponent } from './registrar/registrar.component';
 import { UsuarioService } from './services/usuario.service';
 import { LoginComponent } from './login/login.component';
+import { RecuperarPerfilComponent } from './recuperar-perfil/recuperar-perfil.component';
 
 
 
@@ -20,7 +21,8 @@ import { LoginComponent } from './login/login.component';
   declarations: [
     UsuarioAppComponent,
     RegistrarComponent,
-    LoginComponent
+    LoginComponent,
+    RecuperarPerfilComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +34,8 @@ import { LoginComponent } from './login/login.component';
     HttpClientModule,
   ],
   exports: [
-    LoginComponent
+    LoginComponent,
+    RecuperarPerfilComponent
   ],
   providers: [
     UsuarioService

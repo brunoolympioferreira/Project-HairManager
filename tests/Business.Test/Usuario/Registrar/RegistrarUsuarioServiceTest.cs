@@ -25,6 +25,7 @@ public class RegistrarUsuarioServiceTest
 
         response.Should().NotBeNull();
         response.Token.Should().NotBeNullOrWhiteSpace();
+        response.Nome.Should().NotBeNullOrWhiteSpace();
     }
 
     [Fact]

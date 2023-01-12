@@ -1,6 +1,6 @@
 <ul [ngSwitch]="usuarioLogado()" class="navbar-nav">
   <li *ngSwitchCase="false" class="nav-item">
-    <a class="nav-link" [routerLink]="['/usuario/login']">Registre-se</a>
+    <a class="nav-link" [routerLink]="['/usuario/registro']">Registre-se</a>
   </li>
 
   <li *ngSwitchCase="true" class="nav-item">
