@@ -1,8 +1,11 @@
-﻿using HairManager.Exceptions.ExceptionsBase;
+﻿using HairManager.Comunication.Requests;
+using HairManager.Exceptions.ExceptionsBase;
 using Newtonsoft.Json;
 using System.Globalization;
+using System.IO;
 using System.Net.Http;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -23,4 +26,38 @@ public class ControllerBase : IClassFixture<HairManagerApplicationFactory<Progra
 
         return await _client.PostAsync(metodo, new StringContent(jsonString, Encoding.UTF8, "application/json"));
     }
+
+    protected async Task<string> Login(string email, string senha)
+    {
+        RequestLoginDTO request = new()
+        {
+            Email = email,
+            Senha = senha
+        };
+
+        HttpResponseMessage response = await PostRequest("api/login", request);
+
+        await using Stream responseBody = await response.Content.ReadAsStreamAsync();
+
+        JsonDocument responseData = await JsonDocument.ParseAsync(responseBody);
+
+        return responseData.RootElement.GetProperty("token").GetString();
+    }
+
+    protected async Task<HttpResponseMessage> GetRequest(string metodo, string token = "")
+    {
+        AutorizarRequisicao(token);
+
+        return await _client.GetAsync(metodo);
+    }
+
+    private void AutorizarRequisicao(string token)
+    {
+        if (!string.IsNullOrWhiteSpace(token))
+        {
+            _client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+        }
+    }
+
+
 }
