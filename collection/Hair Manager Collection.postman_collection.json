@@ -7,69 +7,101 @@
 	},
 	"item": [
 		{
-			"name": "Registrar_Usuario",
-			"event": [
+			"name": "Usuario",
+			"item": [
 				{
-					"listen": "prerequest",
-					"script": {
-						"exec": [
-							"let senha = pm.variables.replaceIn('{{$randomPassword}}')\r",
-							"\r",
-							"postman.setGlobalVariable(\"SENHA_HAIR_MANAGER\", senha);"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"nome\": \"{{$randomFullName}}\",\r\n  \"email\": \"{{$randomEmail}}\",\r\n  \"senha\": \"{{SENHA_HAIR_MANAGER}}\",\r\n  \"confirmeSenha\": \"{{SENHA_HAIR_MANAGER}}\",\r\n  \"status\": {{$randomBoolean}}\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+					"name": "Registrar_Usuario",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"let senha = pm.variables.replaceIn('{{$randomPassword}}')\r",
+									"\r",
+									"postman.setGlobalVariable(\"SENHA_HAIR_MANAGER\", senha);"
+								],
+								"type": "text/javascript"
+							}
 						}
-					}
-				},
-				"url": {
-					"raw": "{{URLBASE}}/usuario",
-					"host": [
-						"{{URLBASE}}"
 					],
-					"path": [
-						"usuario"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Login",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"email\": \"usertest@email.com\",\r\n  \"senha\": \"123456\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"{{$randomFullName}}\",\r\n  \"email\": \"{{$randomEmail}}\",\r\n  \"senha\": \"{{SENHA_HAIR_MANAGER}}\",\r\n  \"confirmeSenha\": \"{{SENHA_HAIR_MANAGER}}\",\r\n  \"status\": {{$randomBoolean}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URLBASE_HAIR}}/usuario",
+							"host": [
+								"{{URLBASE_HAIR}}"
+							],
+							"path": [
+								"usuario"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{URLBASE}}/login",
-					"host": [
-						"{{URLBASE}}"
-					],
-					"path": [
-						"login"
-					]
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"usertest@email.com\",\r\n  \"senha\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URLBASE_HAIR}}/login",
+							"host": [
+								"{{URLBASE_HAIR}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recuperar Perfil Usuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URLBASE_HAIR}}/usuario",
+							"host": [
+								"{{URLBASE_HAIR}}"
+							],
+							"path": [
+								"usuario"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	]
 }
