@@ -4,7 +4,7 @@ import { Injectable } from "@angular/core";
 import { catchError, map, Observable } from "rxjs";
 //Utils
 import { BaseService } from "src/app/services/base.service";
-import { Usuario } from "../models/usuario";
+import { Usuario } from './../models/usuario';
 
 @Injectable()
 export class UsuarioService extends BaseService {
@@ -28,5 +28,11 @@ export class UsuarioService extends BaseService {
         catchError(this.serviceError));
 
     return response;
+  }
+
+  ObterUsuario(): Observable<Usuario> {
+    return this.http
+      .get<Usuario>(this.UrlServiceV1 + "usuario", this.ObterAuthHeaderJson())
+      .pipe(catchError(super.serviceError));
   }
 }
