@@ -20,12 +20,17 @@
       <dt class="col-sm-2">
         <label class="control-label">Status:</label>
       </dt>
-      <dd class="col-sm-10">
-        {{usuario.status}}
+      <dd class="col-sm-10" *ngIf="usuario.status == true">
+        Ativo
+      </dd>
+      <dd class="col-sm-10" *ngIf="usuario.status == false">
+        Inativo
       </dd>
     </dl>
     <div class="row">
-      <button class="btn btn-primary">Alterar Senha</button>
+      <div class="col">
+        <button class="btn btn-primary">Alterar Senha</button>
+      </div>
     </div>
   </div>
 </div>
