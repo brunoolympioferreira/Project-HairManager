@@ -141,6 +141,9 @@
   <data name="SENHAS_NAO_CONFEREM" xml:space="preserve">
     <value>As senhas informadas não conferem.</value>
   </data>
+  <data name="SENHA_ATUAL_INVALIDA" xml:space="preserve">
+    <value>Confira sua senha atual e tente novamente</value>
+  </data>
   <data name="SENHA_USUARIO_EMBRANCO" xml:space="preserve">
     <value>A senha do usuário deve ser informada.</value>
   </data>

@@ -62,6 +62,6 @@ public static class Bootstrapper
         services
             .AddScoped<IUsuarioReadOnlyRepository, UsuarioRepository>()
             .AddScoped<IUsuarioWriteOnlyRepository, UsuarioRepository>()
-            .AddScoped<IUpdateOnlyRepository, UsuarioRepository>();
+            .AddScoped<IUsuarioUpdateOnlyRepository, UsuarioRepository>();
     }
 }

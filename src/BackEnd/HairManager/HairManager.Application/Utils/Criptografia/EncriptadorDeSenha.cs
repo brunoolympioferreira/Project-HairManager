@@ -22,6 +22,7 @@ public class EncriptadorDeSenha
 		return StringBytes(hashBytes);
     }
 
+    //Todo: codigo repetido!
     public string CriptografarConfirmeSenha(string confirmeSenha)
     {
         var senhaComChaveAdicional = $"{confirmeSenha}{_chaveDeEncriptacao}";

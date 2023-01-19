@@ -17,53 +17,53 @@ public class TokenController
 
     public string GerarToken(string emailUsuario)
     {
-        var claims = new List<Claim>
+        List<Claim> claims = new()
         {
             new Claim(EmailAlias, emailUsuario)
         };
 
-        var tokenHandler = new JwtSecurityTokenHandler();
+        JwtSecurityTokenHandler tokenHandler = new();
 
-        var tokenDescriptor = new SecurityTokenDescriptor
+        SecurityTokenDescriptor tokenDescriptor = new()
         {
             Subject = new ClaimsIdentity(claims),
             Expires = DateTime.UtcNow.AddMinutes(_tempoDeVidaDoTokenEmMinutos),
             SigningCredentials = new SigningCredentials(SimetricKey(), SecurityAlgorithms.HmacSha256Signature)
         };
 
-        var securityTokem = tokenHandler.CreateToken(tokenDescriptor);
+        SecurityToken securityTokem = tokenHandler.CreateToken(tokenDescriptor);
 
         return tokenHandler.WriteToken(securityTokem);
     }
 
     public ClaimsPrincipal ValidarToken(string token)
     {
-        var tokenHandler = new JwtSecurityTokenHandler();
+        JwtSecurityTokenHandler tokenHandler = new();
 
-        var parametrosValidacao = new TokenValidationParameters
+        TokenValidationParameters parametrosValidacao = new()
         {
             RequireExpirationTime = true,
             IssuerSigningKey = SimetricKey(),
             ClockSkew = new TimeSpan(0),
             ValidateIssuer = false,
-            ValidateAudience = false,
+            ValidateAudience = false
         };
 
-        var claims = tokenHandler.ValidateToken(token, parametrosValidacao, out _);
+        ClaimsPrincipal claims = tokenHandler.ValidateToken(token, parametrosValidacao, out _);
 
         return claims;
     }
 
     public string RecuperarEmail(string token)
     {
-        var claims = ValidarToken(token);
+        ClaimsPrincipal claims = ValidarToken(token);
 
         return claims.FindFirst(EmailAlias).Value;
     }
 
     private SymmetricSecurityKey SimetricKey()
     {
-        var symmetricKey = Convert.FromBase64String(_chaveDeSeguranca);
+        byte[] symmetricKey = Convert.FromBase64String(_chaveDeSeguranca);
         return new SymmetricSecurityKey(symmetricKey);
     }
 }
