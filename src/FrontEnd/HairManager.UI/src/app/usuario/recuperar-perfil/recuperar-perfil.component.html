@@ -1,2 +1,36 @@
-<p>recuperar-perfil works!</p>
-Ola mundo
+<div class="container">
+  <h2 class="text-center">Seja Bem Vindo {{usuario.nome}}</h2>
+  <h5 class="text-center">Meu Perfil</h5>
+  <div class="mt-2">
+    <dl class="row">
+      <dt class="col-sm-2">
+        <label class="control-label">Nome:</label>
+      </dt>
+      <dd class="col-sm-10">
+        {{usuario.nome}}
+      </dd>
+
+      <dt class="col-sm-2">
+        <label class="control-label">Email:</label>
+      </dt>
+      <dd class="col-sm-10">
+        {{usuario.email}}
+      </dd>
+
+      <dt class="col-sm-2">
+        <label class="control-label">Status:</label>
+      </dt>
+      <dd class="col-sm-10" *ngIf="usuario.status == true">
+        Ativo
+      </dd>
+      <dd class="col-sm-10" *ngIf="usuario.status == false">
+        Inativo
+      </dd>
+    </dl>
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-primary">Alterar Senha</button>
+      </div>
+    </div>
+  </div>
+</div>
