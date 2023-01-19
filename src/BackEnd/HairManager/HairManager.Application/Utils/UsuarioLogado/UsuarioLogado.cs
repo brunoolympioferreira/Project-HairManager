@@ -1,6 +1,6 @@
 ﻿using HairManager.Application.Utils.Token;
 using HairManager.Domain.Entities;
-using HairManager.Domain.Repositories;
+using HairManager.Domain.Repositories.Usuario;
 using Microsoft.AspNetCore.Http;
 
 namespace HairManager.Application.Utils.UsuarioLogado;

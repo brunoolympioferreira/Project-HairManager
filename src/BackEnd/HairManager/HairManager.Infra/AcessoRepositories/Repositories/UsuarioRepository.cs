@@ -1,10 +1,10 @@
 ﻿using HairManager.Domain.Entities;
-using HairManager.Domain.Repositories;
+using HairManager.Domain.Repositories.Usuario;
 using Microsoft.EntityFrameworkCore;
 
 namespace HairManager.Infra.AcessoRepositories.Repositories;
 
-public class UsuarioRepository : IUsuarioWriteOnlyRepository, IUsuarioReadOnlyRepository
+public class UsuarioRepository : IUsuarioWriteOnlyRepository, IUsuarioReadOnlyRepository, IUpdateOnlyRepository
 {
     private readonly HairManagerContext _context;
 
@@ -32,5 +32,10 @@ public class UsuarioRepository : IUsuarioWriteOnlyRepository, IUsuarioReadOnlyRe
     {
         return await _context.Usuarios.AsNoTracking()
             .FirstOrDefaultAsync(c => c.Email.Equals(email) && c.Senha.Equals(senha));
+    }
+
+    public void Update(Usuario usuario)
+    {
+        _context.Usuarios.Update(usuario);
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace HairManager.Domain.Repositories;
+﻿namespace HairManager.Domain.Repositories.Usuario;
 
 public interface IUsuarioReadOnlyRepository
 {

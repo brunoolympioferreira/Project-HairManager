@@ -5,6 +5,7 @@ using HairManager.Application.Utils.Token;
 using HairManager.Comunication.Requests;
 using HairManager.Comunication.Responses;
 using HairManager.Domain.Repositories;
+using HairManager.Domain.Repositories.Usuario;
 using HairManager.Exceptions.ExceptionsBase;
 
 namespace HairManager.Application.Services.Usuario.Registrar;

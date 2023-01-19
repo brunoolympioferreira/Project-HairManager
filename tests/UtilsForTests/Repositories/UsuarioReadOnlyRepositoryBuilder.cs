@@ -1,5 +1,5 @@
 ﻿using HairManager.Domain.Entities;
-using HairManager.Domain.Repositories;
+using HairManager.Domain.Repositories.Usuario;
 using Moq;
 
 namespace UtilsForTests.Repositories;
