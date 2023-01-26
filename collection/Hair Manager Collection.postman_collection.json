@@ -10,7 +10,7 @@
 			"name": "Usuario",
 			"item": [
 				{
-					"name": "Registrar_Usuario",
+					"name": "Registrar Usuario",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -96,6 +96,43 @@
 							],
 							"path": [
 								"usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alterar Senha",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"senhaAtual\": \"654321\",\r\n  \"novaSenha\": \"123456\",\r\n  \"confirmeNovaSenha\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URLBASE_HAIR}}/usuario/alterar-senha",
+							"host": [
+								"{{URLBASE_HAIR}}"
+							],
+							"path": [
+								"usuario",
+								"alterar-senha"
 							]
 						}
 					},

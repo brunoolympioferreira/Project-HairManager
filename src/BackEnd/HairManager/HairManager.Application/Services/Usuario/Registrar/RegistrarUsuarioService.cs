@@ -5,6 +5,7 @@ using HairManager.Application.Utils.Token;
 using HairManager.Comunication.Requests;
 using HairManager.Comunication.Responses;
 using HairManager.Domain.Repositories;
+using HairManager.Domain.Repositories.Usuario;
 using HairManager.Exceptions.ExceptionsBase;
 
 namespace HairManager.Application.Services.Usuario.Registrar;
@@ -36,7 +37,7 @@ public class RegistrarUsuarioService : IRegistrarUsuarioService
     {
         await Validar(request);
 
-        var entity = _mapper.Map<Domain.Entities.Usuario>(request);
+        Domain.Entities.Usuario entity = _mapper.Map<Domain.Entities.Usuario>(request);
         entity.Senha = _encriptadorDeSenha.CriptografarSenha(request.Senha);
         entity.ConfirmeSenha = _encriptadorDeSenha.CriptografarConfirmeSenha(request.ConfirmeSenha);
 
@@ -44,7 +45,7 @@ public class RegistrarUsuarioService : IRegistrarUsuarioService
 
         await _unityOfWork.Commit();
 
-        var token = _tokenController.GerarToken(entity.Email);
+        string token = _tokenController.GerarToken(entity.Email);
 
         return new ResponseUsuarioRegistradoDTO
         {
@@ -56,9 +57,9 @@ public class RegistrarUsuarioService : IRegistrarUsuarioService
     private async Task Validar(RequestRegistrarUsuarioDTO request)
     {
         var validator = new RegistrarUsuarioValidator();
-        var result = validator.Validate(request);
+        ValidationResult result = validator.Validate(request);
 
-        var existeUsuarioComEmail = await _usuarioReadOnlyRepository.ExisteUsuarioComEmail(request.Email);
+        bool existeUsuarioComEmail = await _usuarioReadOnlyRepository.ExisteUsuarioComEmail(request.Email);
         if (existeUsuarioComEmail)
         {
             result.Errors.Add(new ValidationFailure("email", ResourceMensagensDeErro.EMAIL_JA_CADASTRADO));

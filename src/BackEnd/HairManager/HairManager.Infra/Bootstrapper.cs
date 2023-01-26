@@ -1,6 +1,7 @@
 ﻿using FluentMigrator.Runner;
 using HairManager.Domain.Extension;
 using HairManager.Domain.Repositories;
+using HairManager.Domain.Repositories.Usuario;
 using HairManager.Infra.AcessoRepositories;
 using HairManager.Infra.AcessoRepositories.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -60,6 +61,7 @@ public static class Bootstrapper
     {
         services
             .AddScoped<IUsuarioReadOnlyRepository, UsuarioRepository>()
-            .AddScoped<IUsuarioWriteOnlyRepository, UsuarioRepository>();
+            .AddScoped<IUsuarioWriteOnlyRepository, UsuarioRepository>()
+            .AddScoped<IUsuarioUpdateOnlyRepository, UsuarioRepository>();
     }
 }

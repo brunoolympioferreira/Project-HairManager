@@ -1,6 +1,6 @@
 ﻿using HairManager.Application.Utils.Token;
 using HairManager.Comunication.Responses;
-using HairManager.Domain.Repositories;
+using HairManager.Domain.Repositories.Usuario;
 using HairManager.Exceptions.ExceptionsBase;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
