@@ -7,15 +7,15 @@ public class AlterarSenhaValidator : AbstractValidator<RequestAlterarSenhaDTO>
 {
     public AlterarSenhaValidator()
     {
-        RuleFor(c => c.SenhaAtual).NotEmpty().WithMessage(ResourceMensagensDeErro.SENHA_USUARIO_EMBRANCO);
+        RuleFor(c => c.NovaSenha).NotEmpty().WithMessage(ResourceMensagensDeErro.SENHA_USUARIO_EMBRANCO);
 
-        RuleFor(c => c.SenhaAtual)
+        RuleFor(c => c.NovaSenha)
         .Equal(c => c.ConfirmeNovaSenha)
-        .When(c => !string.IsNullOrWhiteSpace(c.SenhaAtual)).WithMessage(ResourceMensagensDeErro.SENHAS_NAO_CONFEREM);
+        .When(c => !string.IsNullOrWhiteSpace(c.NovaSenha)).WithMessage(ResourceMensagensDeErro.SENHAS_NAO_CONFEREM);
 
-        When(c => !string.IsNullOrWhiteSpace(c.SenhaAtual), () =>
+        When(c => !string.IsNullOrWhiteSpace(c.NovaSenha), () =>
         {
-            RuleFor(c => c.SenhaAtual.Length).GreaterThanOrEqualTo(6).WithMessage(ResourceMensagensDeErro.SENHA_USUARIO_MINIMO_SEIS_CARACTERES);
+            RuleFor(c => c.NovaSenha.Length).GreaterThanOrEqualTo(6).WithMessage(ResourceMensagensDeErro.SENHA_USUARIO_MINIMO_SEIS_CARACTERES);
         });
     }
 }

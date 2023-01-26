@@ -1,4 +1,5 @@
 ﻿using HairManager.Api.Filtros;
+using HairManager.Application.Services.Usuario.AlterarSenha;
 using HairManager.Application.Services.Usuario.RecuperarPerfil;
 using HairManager.Application.Services.Usuario.Registrar;
 using HairManager.Comunication.Requests;
@@ -29,5 +30,18 @@ public class UsuarioController : HairManagerController
         var resultado = await service.Executar();
 
         return Ok(resultado);
+    }
+
+    [HttpPut]
+    [Route("alterar-senha")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ServiceFilter(typeof(UsuarioAutenticadoAttribute))]
+    public async Task<IActionResult> AlterarSenha(
+        [FromServices] IAlterarSenhaService service,
+        [FromBody] RequestAlterarSenhaDTO request)
+    {
+        await service.Executar(request);
+
+        return NoContent();
     }
 }
