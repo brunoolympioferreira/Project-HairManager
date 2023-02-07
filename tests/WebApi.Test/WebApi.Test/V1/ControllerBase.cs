@@ -50,6 +50,15 @@ public class ControllerBase : IClassFixture<HairManagerApplicationFactory<Progra
 
         return await _client.GetAsync(metodo);
     }
+    
+    protected async Task<HttpResponseMessage> PutRequest(string metodo, object body, string token = "")
+    {
+        AutorizarRequisicao(token);
+
+        string jsonString = JsonConvert.SerializeObject(body);
+
+        return await _client.PutAsync(metodo, new StringContent(jsonString, Encoding.UTF8, "application/json"));
+    }
 
     private void AutorizarRequisicao(string token)
     {
