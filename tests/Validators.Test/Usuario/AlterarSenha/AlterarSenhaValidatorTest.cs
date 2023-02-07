@@ -1,5 +1,7 @@
-﻿using FluentAssertions;
+﻿using Bogus;
+using FluentAssertions;
 using HairManager.Application.Services.Usuario.AlterarSenha;
+using HairManager.Comunication.Requests;
 using HairManager.Exceptions.ExceptionsBase;
 using UtilsForTests.Requests;
 using Xunit;
@@ -12,10 +14,10 @@ public class AlterarSenhaValidatorTest
     {
         var validator = new AlterarSenhaValidator();
 
-        var request = RequestAlterarSenhaUsuarioBuilder.Construir();
+        RequestAlterarSenhaDTO request = RequestAlterarSenhaUsuarioBuilder.Construir();
         request.ConfirmeNovaSenha = request.NovaSenha;
 
-        var result = validator.Validate(request);
+        FluentValidation.Results.ValidationResult result = validator.Validate(request);
 
         result.IsValid.Should().BeTrue();
     }
@@ -30,10 +32,10 @@ public class AlterarSenhaValidatorTest
     {
         var validator = new AlterarSenhaValidator();
 
-        var request = RequestAlterarSenhaUsuarioBuilder.Construir(tamanhoSenha);
+        RequestAlterarSenhaDTO request = RequestAlterarSenhaUsuarioBuilder.Construir(tamanhoSenha);
         request.ConfirmeNovaSenha = request.NovaSenha;
 
-        var result = validator.Validate(request);
+        FluentValidation.Results.ValidationResult result = validator.Validate(request);
 
         result.IsValid.Should().BeFalse();
         result.Errors.Should().ContainSingle().And.
@@ -46,11 +48,11 @@ public class AlterarSenhaValidatorTest
     {
         var validator = new AlterarSenhaValidator();
 
-        var request = RequestAlterarSenhaUsuarioBuilder.Construir();
+        RequestAlterarSenhaDTO request = RequestAlterarSenhaUsuarioBuilder.Construir();
         request.ConfirmeNovaSenha = request.NovaSenha;
         request.NovaSenha = string.Empty;
 
-        var result = validator.Validate(request);
+        FluentValidation.Results.ValidationResult result = validator.Validate(request);
 
         result.IsValid.Should().BeFalse();
         result.Errors.Should().ContainSingle().And
