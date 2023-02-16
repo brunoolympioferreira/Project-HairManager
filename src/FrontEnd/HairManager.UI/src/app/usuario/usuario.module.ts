@@ -14,6 +14,7 @@ import { RegistrarComponent } from './registrar/registrar.component';
 import { UsuarioService } from './services/usuario.service';
 import { LoginComponent } from './login/login.component';
 import { RecuperarPerfilComponent } from './recuperar-perfil/recuperar-perfil.component';
+import { AlterarSenhaComponent } from './alterar-senha/alterar-senha.component';
 
 
 
@@ -22,7 +23,8 @@ import { RecuperarPerfilComponent } from './recuperar-perfil/recuperar-perfil.co
     UsuarioAppComponent,
     RegistrarComponent,
     LoginComponent,
-    RecuperarPerfilComponent
+    RecuperarPerfilComponent,
+    AlterarSenhaComponent
   ],
   imports: [
     CommonModule,

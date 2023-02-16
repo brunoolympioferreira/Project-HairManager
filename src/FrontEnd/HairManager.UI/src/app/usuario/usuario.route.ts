@@ -1,3 +1,4 @@
+import { AlterarSenhaComponent } from './alterar-senha/alterar-senha.component';
 //Angular
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
@@ -13,7 +14,8 @@ const usuarioRouterConfig: Routes = [
     path: '', component: UsuarioAppComponent,
     children: [
       { path: 'registro', component: RegistrarComponent },
-      { path: 'login', component: LoginComponent }
+      { path: 'login', component: LoginComponent },
+      { path: 'alterar-senha', component: AlterarSenhaComponent },
     ]
   }
 
