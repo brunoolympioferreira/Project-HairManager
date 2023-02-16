@@ -4,13 +4,13 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-recuperar-perfil',
-  templateUrl: './recuperar-perfil.component.html',
-  styleUrls: ['./recuperar-perfil.component.scss']
+  templateUrl: './recuperar-perfil.component.html'
 })
 export class RecuperarPerfilComponent implements OnInit {
 
   public usuario: Usuario;
   errorMessage: string;
+
 
   constructor(private usuarioService: UsuarioService) { }
 

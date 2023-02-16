@@ -35,4 +35,12 @@ export class UsuarioService extends BaseService {
       .get<Usuario>(this.UrlServiceV1 + "usuario", this.ObterAuthHeaderJson())
       .pipe(catchError(super.serviceError));
   }
+
+  alterarSenha(usuario: Usuario): Observable<Usuario> {
+    return this.http
+      .put(this.UrlServiceV1 + "usuario/alterar-senha", usuario, super.ObterAuthHeaderJson())
+      .pipe(
+        map(super.extractData),
+        catchError(super.serviceError));
+  }
 }

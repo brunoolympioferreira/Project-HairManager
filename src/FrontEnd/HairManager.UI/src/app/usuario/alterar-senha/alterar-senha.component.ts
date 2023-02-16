@@ -65,14 +65,37 @@ export class AlterarSenhaComponent extends FormBaseComponent implements OnInit, 
   }
 
   alterarSenha() {
+    if (this.alterarSenhaForm.dirty && this.alterarSenhaForm.valid) {
+      this.usuario = Object.assign({}, this.usuario, this.alterarSenhaForm.value);
 
+      this.usuarioService.alterarSenha(this.usuario)
+        .subscribe(
+          sucesso => { this.processarSucesso(sucesso) },
+          falha => { this.processarFalha(falha) }
+        );
+    }
   }
 
-  processarSucesso() {
+  processarSucesso(response: any) {
+    this.alterarSenhaForm.reset();
+    this.errors = [];
 
+    let toast = this.toastr.success('Senha alterada com sucesso!', 'Sucesso');
+
+    if (toast) {
+      toast.onHidden.subscribe(() => {
+        this.router.navigate(['/home'])
+        location.reload()
+      });
+    }
   }
 
-  processarFalha() {
+  processarFalha(fail: any) {
+    this.errors = fail.error.errors;
+    this.toastr.error('Ocurreu um erro!', 'Opa :(');
+  }
 
+  closeModal() {
+    const modalAlterarSenha = document.getElementById('')
   }
 }

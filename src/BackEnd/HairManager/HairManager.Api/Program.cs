@@ -45,7 +45,7 @@ builder.Services.AddScoped(provider => new AutoMapper.MapperConfiguration(cfg =>
 
 builder.Services.AddCors(policyBuilder =>
     policyBuilder.AddDefaultPolicy(policy =>
-        policy.WithOrigins("*").AllowAnyHeader().AllowAnyHeader())
+        policy.WithOrigins("*").AllowAnyHeader().AllowAnyHeader().WithMethods("GET", "POST", "PUT"))
 );
 
 builder.Services.AddScoped<UsuarioAutenticadoAttribute>();
