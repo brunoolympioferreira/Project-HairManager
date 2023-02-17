@@ -1,0 +1,35 @@
+<form novalidate (ngSubmit)="login()" [formGroup]="loginForm">
+  <div class="row full-height justify-content-center">
+    <h2>Login</h2>
+    <p>Faça seu login para continuar</p>
+
+    <div class="form-group mb-2">
+      <label class="col-md-2 control-label mb-2">Email</label>
+      <div class="col-md-10">
+        <input class="form-control" id="email" type="text" placeholder="E-mail (requerido)" formControlName="email"
+          [ngClass]="{'is-invalid': displayMessage.email }" />
+        <span class="text-danger" *ngIf="displayMessage.email">
+          <p [innerHTML]="displayMessage.email"></p>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group mb-2">
+      <label class="col-md-2 control-label mb-2">Senha</label>
+      <div class="col-md-10">
+        <input class="form-control" id="senha" type="password" placeholder="Senha (requerido)" formControlName="senha"
+          [ngClass]="{'is-invalid': displayMessage.senha }" />
+        <span class="text-danger" *ngIf="displayMessage.senha">
+          <p [innerHTML]="displayMessage.senha"></p>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-4 col-md-offset-2">
+        <span><button class="btn btn-success" id="login" [disabled]="!loginForm.valid"
+            type="submit">Login</button></span>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,14 @@
+<div class="container mt-4">
+  <div class="row full-height">
+    <div [ngSwitch]="usuarioLogado()" class="col-md-4 offset-md-1 align-self-center">
+      <div *ngSwitchCase="true">
+        <app-recuperar-perfil></app-recuperar-perfil>
+      </div>
+      <div *ngSwitchCase="false">
+        <app-login></app-login>
+      </div>
+    </div>
+    <div class="col-md-6 col-12 full-height img-cover d-none d-md-block">
+    </div>
+  </div>
+</div>
