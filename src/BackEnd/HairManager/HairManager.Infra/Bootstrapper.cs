@@ -1,13 +1,13 @@
 ﻿using FluentMigrator.Runner;
 using HairManager.Domain.Extension;
 using HairManager.Domain.Repositories;
+using HairManager.Domain.Repositories.Funcionario;
 using HairManager.Domain.Repositories.Usuario;
 using HairManager.Infra.AcessoRepositories;
 using HairManager.Infra.AcessoRepositories.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Protocols;
 using System.Reflection;
 
 namespace HairManager.Infra;
@@ -33,7 +33,7 @@ public static class Bootstrapper
             c.AddMySql5()
             .WithGlobalConnectionString(configuration.GetConnectionComplete())
             .ScanIn(Assembly.Load("HairManager.Infra")).For.All());
-        }        
+        }
     }
 
     private static void AddContexto(IServiceCollection services, IConfiguration configuration)
@@ -49,7 +49,7 @@ public static class Bootstrapper
             {
                 options.UseMySql(connectionString, versaoServidor);
             });
-        }   
+        }
     }
 
     private static void AddUnityOfWork(IServiceCollection services)
@@ -62,6 +62,7 @@ public static class Bootstrapper
         services
             .AddScoped<IUsuarioReadOnlyRepository, UsuarioRepository>()
             .AddScoped<IUsuarioWriteOnlyRepository, UsuarioRepository>()
-            .AddScoped<IUsuarioUpdateOnlyRepository, UsuarioRepository>();
+            .AddScoped<IUsuarioUpdateOnlyRepository, UsuarioRepository>()
+            .AddScoped<IFuncionarioWriteOnlyRepository, FuncionarioRepository>();
     }
 }
