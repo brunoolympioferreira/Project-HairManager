@@ -8,6 +8,7 @@ public class HairManagerContext : DbContext
     public HairManagerContext(DbContextOptions<HairManagerContext> options) : base(options) { }
 
     public DbSet<Usuario> Usuarios { get; set; }
+    public DbSet<Funcionario> Funcionarios { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
