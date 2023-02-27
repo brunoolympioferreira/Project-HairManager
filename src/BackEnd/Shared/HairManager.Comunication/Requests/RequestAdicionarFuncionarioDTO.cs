@@ -14,7 +14,7 @@ public class RequestAdicionarFuncionarioDTO
     public string CPF { get; set; }
     public string RG { get; set; }
     public string PIS { get; set; }
-    public string Reservista { get; set; }
+    public string Reservista { get; set; } // reservista pode ser nulo em caso de mulher -> corrigir no banco de dados
     public string Cargo { get; set; }
     public decimal Salario { get; set; }
     public EstadoCivilEnum EstadoCivil { get; set; }

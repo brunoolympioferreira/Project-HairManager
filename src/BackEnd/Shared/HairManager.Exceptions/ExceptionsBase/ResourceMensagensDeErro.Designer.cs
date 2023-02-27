@@ -61,11 +61,65 @@ namespace HairManager.Exceptions.ExceptionsBase {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to O Cargo do funcionário deve ser informado..
+        /// </summary>
+        public static string CARGO_EMBRANCO {
+            get {
+                return ResourceManager.GetString("CARGO_EMBRANCO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A confirmação de senha deve ser informada..
         /// </summary>
         public static string CONFIRME_SENHA_USUARIO_EMBRANCO {
             get {
                 return ResourceManager.GetString("CONFIRME_SENHA_USUARIO_EMBRANCO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O CPF deve ser informado..
+        /// </summary>
+        public static string CPF_EMBRANCO {
+            get {
+                return ResourceManager.GetString("CPF_EMBRANCO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Insira um CPF válido.
+        /// </summary>
+        public static string CPF_INVALIDO {
+            get {
+                return ResourceManager.GetString("CPF_INVALIDO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O número da CTPS deve ser informado..
+        /// </summary>
+        public static string CTPS_NUMERO_EMBRANCO {
+            get {
+                return ResourceManager.GetString("CTPS_NUMERO_EMBRANCO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O número da série do CTPS deve ser informado..
+        /// </summary>
+        public static string CTPS_SERIE_EMBRANCO {
+            get {
+                return ResourceManager.GetString("CTPS_SERIE_EMBRANCO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A data deve ser informada..
+        /// </summary>
+        public static string DATA_EMBRANCO {
+            get {
+                return ResourceManager.GetString("DATA_EMBRANCO", resourceCulture);
             }
         }
         
@@ -115,11 +169,74 @@ namespace HairManager.Exceptions.ExceptionsBase {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A nacionalidade deve ser informada..
+        /// </summary>
+        public static string NACIONALIDADE_EMBRANCO {
+            get {
+                return ResourceManager.GetString("NACIONALIDADE_EMBRANCO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O nome do funcionário deve ser informado..
+        /// </summary>
+        public static string NOME_FUNCIONARIO_EMBRANCO {
+            get {
+                return ResourceManager.GetString("NOME_FUNCIONARIO_EMBRANCO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O nome deve conter no mínimo 3 caracteres e no máximo 50 caracteres..
+        /// </summary>
+        public static string NOME_FUNCIONARIO_INVALIDO {
+            get {
+                return ResourceManager.GetString("NOME_FUNCIONARIO_INVALIDO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to O nome do usuário deve ser informado..
         /// </summary>
         public static string NOME_USUARIO_EMBRANCO {
             get {
                 return ResourceManager.GetString("NOME_USUARIO_EMBRANCO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O PIS deve ser informado..
+        /// </summary>
+        public static string PIS_EMBRANCO {
+            get {
+                return ResourceManager.GetString("PIS_EMBRANCO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O RG deve ser informado..
+        /// </summary>
+        public static string RG_EMBRANCO {
+            get {
+                return ResourceManager.GetString("RG_EMBRANCO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O Salário do funcionário deve ser informado..
+        /// </summary>
+        public static string SALARIO_EMBRANCO {
+            get {
+                return ResourceManager.GetString("SALARIO_EMBRANCO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Insira um valor maior que zero..
+        /// </summary>
+        public static string SALARIO_INVALIDO {
+            get {
+                return ResourceManager.GetString("SALARIO_INVALIDO", resourceCulture);
             }
         }
         
@@ -165,6 +282,24 @@ namespace HairManager.Exceptions.ExceptionsBase {
         public static string STATUS_USUARIO_INVALIDO {
             get {
                 return ResourceManager.GetString("STATUS_USUARIO_INVALIDO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O telefone do funcionário deve ser informado..
+        /// </summary>
+        public static string TELEFONE_FUNCIONARIO_EMBRANCO {
+            get {
+                return ResourceManager.GetString("TELEFONE_FUNCIONARIO_EMBRANCO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O telefone do funcinário deve conter somente números..
+        /// </summary>
+        public static string TELEFONE_FUNCIONARIO_INVALIDO {
+            get {
+                return ResourceManager.GetString("TELEFONE_FUNCIONARIO_INVALIDO", resourceCulture);
             }
         }
         

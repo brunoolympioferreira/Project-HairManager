@@ -117,8 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CARGO_EMBRANCO" xml:space="preserve">
+    <value>O Cargo do funcionário deve ser informado.</value>
+  </data>
   <data name="CONFIRME_SENHA_USUARIO_EMBRANCO" xml:space="preserve">
     <value>A confirmação de senha deve ser informada.</value>
+  </data>
+  <data name="CPF_EMBRANCO" xml:space="preserve">
+    <value>O CPF deve ser informado.</value>
+  </data>
+  <data name="CPF_INVALIDO" xml:space="preserve">
+    <value>Insira um CPF válido</value>
+  </data>
+  <data name="CTPS_NUMERO_EMBRANCO" xml:space="preserve">
+    <value>O número da CTPS deve ser informado.</value>
+  </data>
+  <data name="CTPS_SERIE_EMBRANCO" xml:space="preserve">
+    <value>O número da série do CTPS deve ser informado.</value>
+  </data>
+  <data name="DATA_EMBRANCO" xml:space="preserve">
+    <value>A data deve ser informada.</value>
   </data>
   <data name="EMAIL_JA_CADASTRADO" xml:space="preserve">
     <value>O e-mail informado já está registrado na base de dados.</value>
@@ -135,8 +153,29 @@
   <data name="LOGIN_INVALIDO" xml:space="preserve">
     <value>O e-mail e/ou senha estão incorretas.</value>
   </data>
+  <data name="NACIONALIDADE_EMBRANCO" xml:space="preserve">
+    <value>A nacionalidade deve ser informada.</value>
+  </data>
+  <data name="NOME_FUNCIONARIO_EMBRANCO" xml:space="preserve">
+    <value>O nome do funcionário deve ser informado.</value>
+  </data>
+  <data name="NOME_FUNCIONARIO_INVALIDO" xml:space="preserve">
+    <value>O nome deve conter no mínimo 3 caracteres e no máximo 50 caracteres.</value>
+  </data>
   <data name="NOME_USUARIO_EMBRANCO" xml:space="preserve">
     <value>O nome do usuário deve ser informado.</value>
+  </data>
+  <data name="PIS_EMBRANCO" xml:space="preserve">
+    <value>O PIS deve ser informado.</value>
+  </data>
+  <data name="RG_EMBRANCO" xml:space="preserve">
+    <value>O RG deve ser informado.</value>
+  </data>
+  <data name="SALARIO_EMBRANCO" xml:space="preserve">
+    <value>O Salário do funcionário deve ser informado.</value>
+  </data>
+  <data name="SALARIO_INVALIDO" xml:space="preserve">
+    <value>Insira um valor maior que zero.</value>
   </data>
   <data name="SENHAS_NAO_CONFEREM" xml:space="preserve">
     <value>As senhas informadas não conferem.</value>
@@ -152,6 +191,12 @@
   </data>
   <data name="STATUS_USUARIO_INVALIDO" xml:space="preserve">
     <value>O status do usuário deve ser informado.</value>
+  </data>
+  <data name="TELEFONE_FUNCIONARIO_EMBRANCO" xml:space="preserve">
+    <value>O telefone do funcionário deve ser informado.</value>
+  </data>
+  <data name="TELEFONE_FUNCIONARIO_INVALIDO" xml:space="preserve">
+    <value>O telefone do funcinário deve conter somente números.</value>
   </data>
   <data name="TOKEN_EXPIRADO" xml:space="preserve">
     <value>Faça login novamente no APP.</value>
