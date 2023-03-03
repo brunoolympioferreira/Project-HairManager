@@ -61,11 +61,29 @@ namespace HairManager.Exceptions.ExceptionsBase {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to O bairro deve ser informado..
+        /// </summary>
+        public static string BAIRRO_EMBRANCO {
+            get {
+                return ResourceManager.GetString("BAIRRO_EMBRANCO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to O Cargo do funcionário deve ser informado..
         /// </summary>
         public static string CARGO_EMBRANCO {
             get {
                 return ResourceManager.GetString("CARGO_EMBRANCO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A cidade deve ser informada..
+        /// </summary>
+        public static string CIDADE_EMBRANCO {
+            get {
+                return ResourceManager.GetString("CIDADE_EMBRANCO", resourceCulture);
             }
         }
         
@@ -160,6 +178,15 @@ namespace HairManager.Exceptions.ExceptionsBase {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to O estado deve ser informado..
+        /// </summary>
+        public static string ESTADO_EMBRANCO {
+            get {
+                return ResourceManager.GetString("ESTADO_EMBRANCO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to O e-mail e/ou senha estão incorretas..
         /// </summary>
         public static string LOGIN_INVALIDO {
@@ -205,6 +232,24 @@ namespace HairManager.Exceptions.ExceptionsBase {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to O número deve ser informado..
+        /// </summary>
+        public static string NUMERO_EMBRANCO {
+            get {
+                return ResourceManager.GetString("NUMERO_EMBRANCO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to O país deve ser informado..
+        /// </summary>
+        public static string PAIS_EMBRANCO {
+            get {
+                return ResourceManager.GetString("PAIS_EMBRANCO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to O PIS deve ser informado..
         /// </summary>
         public static string PIS_EMBRANCO {
@@ -219,6 +264,15 @@ namespace HairManager.Exceptions.ExceptionsBase {
         public static string RG_EMBRANCO {
             get {
                 return ResourceManager.GetString("RG_EMBRANCO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A rua deve ser informada..
+        /// </summary>
+        public static string RUA_EMBRANCO {
+            get {
+                return ResourceManager.GetString("RUA_EMBRANCO", resourceCulture);
             }
         }
         

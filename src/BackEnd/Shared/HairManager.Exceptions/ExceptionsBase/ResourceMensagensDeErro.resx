@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BAIRRO_EMBRANCO" xml:space="preserve">
+    <value>O bairro deve ser informado.</value>
+  </data>
   <data name="CARGO_EMBRANCO" xml:space="preserve">
     <value>O Cargo do funcionário deve ser informado.</value>
+  </data>
+  <data name="CIDADE_EMBRANCO" xml:space="preserve">
+    <value>A cidade deve ser informada.</value>
   </data>
   <data name="CONFIRME_SENHA_USUARIO_EMBRANCO" xml:space="preserve">
     <value>A confirmação de senha deve ser informada.</value>
@@ -150,6 +156,9 @@
   <data name="ERRO_DESCONHECIDO" xml:space="preserve">
     <value>Erro desconhecido</value>
   </data>
+  <data name="ESTADO_EMBRANCO" xml:space="preserve">
+    <value>O estado deve ser informado.</value>
+  </data>
   <data name="LOGIN_INVALIDO" xml:space="preserve">
     <value>O e-mail e/ou senha estão incorretas.</value>
   </data>
@@ -165,11 +174,20 @@
   <data name="NOME_USUARIO_EMBRANCO" xml:space="preserve">
     <value>O nome do usuário deve ser informado.</value>
   </data>
+  <data name="NUMERO_EMBRANCO" xml:space="preserve">
+    <value>O número deve ser informado.</value>
+  </data>
+  <data name="PAIS_EMBRANCO" xml:space="preserve">
+    <value>O país deve ser informado.</value>
+  </data>
   <data name="PIS_EMBRANCO" xml:space="preserve">
     <value>O PIS deve ser informado.</value>
   </data>
   <data name="RG_EMBRANCO" xml:space="preserve">
     <value>O RG deve ser informado.</value>
+  </data>
+  <data name="RUA_EMBRANCO" xml:space="preserve">
+    <value>A rua deve ser informada.</value>
   </data>
   <data name="SALARIO_EMBRANCO" xml:space="preserve">
     <value>O Salário do funcionário deve ser informado.</value>
