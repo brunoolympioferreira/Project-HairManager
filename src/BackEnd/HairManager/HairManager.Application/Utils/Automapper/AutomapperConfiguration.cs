@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using HairManager.Comunication.DTO;
 using HairManager.Comunication.Requests;
 using HairManager.Comunication.Responses;
 using HairManager.Domain.Entities;
@@ -17,6 +18,8 @@ public class AutomapperConfiguration : Profile
         CreateMap<RequestRegistrarUsuarioDTO, Usuario>()
             .ForMember(destino => destino.Senha, config => config.Ignore())
             .ForMember(destino => destino.ConfirmeSenha, config => config.Ignore());
+
+		CreateMap<EnderecoDTO, Endereco>();
     }
 
 	private void EntityForResponse()
