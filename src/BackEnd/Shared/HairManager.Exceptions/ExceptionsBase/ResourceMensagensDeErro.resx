@@ -135,6 +135,9 @@
   <data name="CPF_INVALIDO" xml:space="preserve">
     <value>Insira um CPF válido</value>
   </data>
+  <data name="CPF_JA_CADASTRADO" xml:space="preserve">
+    <value>Esse CPF já está cadastrado em nossa base.</value>
+  </data>
   <data name="CTPS_NUMERO_EMBRANCO" xml:space="preserve">
     <value>O número da CTPS deve ser informado.</value>
   </data>

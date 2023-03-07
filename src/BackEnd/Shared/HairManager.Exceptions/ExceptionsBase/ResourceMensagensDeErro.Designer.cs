@@ -115,6 +115,15 @@ namespace HairManager.Exceptions.ExceptionsBase {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Esse CPF já está cadastrado em nossa base..
+        /// </summary>
+        public static string CPF_JA_CADASTRADO {
+            get {
+                return ResourceManager.GetString("CPF_JA_CADASTRADO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to O número da CTPS deve ser informado..
         /// </summary>
         public static string CTPS_NUMERO_EMBRANCO {
