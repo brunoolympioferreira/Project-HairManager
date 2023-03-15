@@ -37,7 +37,7 @@ public class AdicionarFuncionarioService : IAdicionarFuncionarioService
 
         await _unityOfWork.Commit();
 
-        return _mapper.Map<ResponseBaseDTO>(request);
+        return _mapper.Map<ResponseBaseDTO>(funcionario);
     }
 
     private async Task Validar(RequestAdicionarFuncionarioDTO request)
@@ -58,7 +58,7 @@ public class AdicionarFuncionarioService : IAdicionarFuncionarioService
 
     private Domain.Entities.Funcionario FuncionarioMapping(RequestAdicionarFuncionarioDTO request)
     {
-        var endereco =  _enderecoService.Executar(request.Endereco);
+        //var endereco =  _enderecoService.Executar(request.Endereco);
 
         var result = new Domain.Entities.Funcionario()
         {
@@ -82,14 +82,14 @@ public class AdicionarFuncionarioService : IAdicionarFuncionarioService
 
             Endereco = new Domain.Entities.Endereco()
             {
-                Id = endereco.EnderecoId,
-                Rua = endereco.Rua,
-                Numero = endereco.Numero,
-                Complemento = endereco.Complemento,
-                Bairro = endereco.Bairro,
-                Cidade = endereco.Cidade,
-                Estado = (EstadosEnum)endereco.Estado,
-                Pais = endereco.Pais
+                //Id = request.Endereco.Id,
+                Rua = request.Endereco.Rua,
+                Numero = request.Endereco.Numero,
+                Complemento = request.Endereco.Complemento,
+                Bairro = request.Endereco.Bairro,
+                Cidade = request.Endereco.Cidade,
+                Estado = (EstadosEnum)request.Endereco.Estado,
+                Pais = request.Endereco.Pais
             }
         };
 

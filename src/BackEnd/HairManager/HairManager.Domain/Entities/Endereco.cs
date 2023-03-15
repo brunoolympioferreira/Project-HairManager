@@ -10,6 +10,5 @@ public class Endereco : BaseEntity
     public string Cidade { get; set; }
     public EstadosEnum Estado { get; set; }
     public string Pais { get; set; }
-
     public virtual Funcionario Funcionario { get; set; }
 }

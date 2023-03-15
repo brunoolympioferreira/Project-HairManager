@@ -20,7 +20,7 @@ public class Funcionario : BaseEntity
     public DateTime? DataDemissao { get; set; }
     public StatusFuncionarioEnum StatusFuncionario { get; set; }
     public DateTime VencimentoFerias { get; set; }
-    public int EnderecoId { get; set; }
 
+    public long EnderecoId { get; set; }
     public virtual Endereco Endereco { get; set; }
 }

@@ -25,7 +25,7 @@ public class EnderecoService : IEnderecoService
 
         Domain.Entities.Endereco endereco = _mapper.Map<Domain.Entities.Endereco>(enderecoDTO);
 
-        _repository.Adicionar(endereco);
+        //_repository.Adicionar(endereco);
 
         var response = _mapper.Map<ResponseEnderecoDTO>(endereco);
 
