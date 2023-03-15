@@ -1,4 +1,5 @@
-﻿using Microsoft.OpenApi.Models;
+﻿using HairManager.Api.Binder;
+using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace HairManager.Api.Filtros;

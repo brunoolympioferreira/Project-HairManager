@@ -34,21 +34,22 @@ public class Versao0002 : Migration
      table
         .WithColumn("Nome").AsString(100).NotNullable()
         .WithColumn("Telefone").AsString(20).NotNullable()
-        .WithColumn("Data_Nascimento").AsDate().NotNullable()
+        .WithColumn("DataNascimento").AsDate().NotNullable()
         .WithColumn("Nacionalidade").AsString(20).NotNullable()
-        .WithColumn("EnderecoId").AsInt64().NotNullable().ForeignKey("FK_Funcionario_Endereco_Id","Funcionarios", "Id").OnDeleteOrUpdate(System.Data.Rule.Cascade)
-        .WithColumn("CTPS_Numero").AsString(10).NotNullable()
-        .WithColumn("CTPS_Serie").AsString(10).NotNullable()
+        .WithColumn("CTPSNumero").AsString(10).NotNullable()
+        .WithColumn("CTPSSerie").AsString(10).NotNullable()
         .WithColumn("CPF").AsString(11).NotNullable()
         .WithColumn("RG").AsString(10).NotNullable()
         .WithColumn("PIS").AsString(15).NotNullable()
         .WithColumn("Reservista").AsString(15).NotNullable()
         .WithColumn("Cargo").AsString(20).NotNullable()
         .WithColumn("Salario").AsDecimal().NotNullable()
-        .WithColumn("Estado_Civil").AsDecimal().NotNullable()
-        .WithColumn("Data_Admissao").AsDate().NotNullable()
-        .WithColumn("Data_Demissao").AsDate().Nullable()
+        .WithColumn("EstadoCivil").AsDecimal().NotNullable()
+        .WithColumn("DataAdmissao").AsDate().NotNullable()
+        .WithColumn("DataDemissao").AsDate().Nullable()
         .WithColumn("Status").AsString().NotNullable()
-        .WithColumn("Vencimento_Ferias").AsDate().NotNullable();
+        .WithColumn("VencimentoFerias").AsDate().NotNullable()
+        .WithColumn("EnderecoId").AsInt64().NotNullable().ForeignKey("FK_Funcionario_Endereco_Id", "Enderecos", "Id").OnDeleteOrUpdate(System.Data.Rule.Cascade);
+
     }
 }

@@ -213,6 +213,9 @@
   <data name="STATUS_USUARIO_INVALIDO" xml:space="preserve">
     <value>O status do usuário deve ser informado.</value>
   </data>
+  <data name="string" xml:space="preserve">
+    <value />
+  </data>
   <data name="TELEFONE_FUNCIONARIO_EMBRANCO" xml:space="preserve">
     <value>O telefone do funcionário deve ser informado.</value>
   </data>

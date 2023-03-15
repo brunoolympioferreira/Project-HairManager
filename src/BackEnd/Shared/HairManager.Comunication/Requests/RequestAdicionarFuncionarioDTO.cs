@@ -6,7 +6,7 @@ public class RequestAdicionarFuncionarioDTO
 {
     public string Nome { get; set; }
     public string Telefone { get; set; }
-    public DateOnly DataNascimento { get; set; }
+    public DateTime DataNascimento { get; set; }
     public string Nacionalidade { get; set; }
     public EnderecoDTO Endereco { get; set; }
     public string CTPSNumero { get; set; }
@@ -18,8 +18,8 @@ public class RequestAdicionarFuncionarioDTO
     public string Cargo { get; set; }
     public decimal Salario { get; set; }
     public EstadoCivilEnum EstadoCivil { get; set; }
-    public DateOnly DataAdmissao { get; set; }
-    public DateOnly? DataDemissao { get; set; }
+    public DateTime DataAdmissao { get; set; }
+    public DateTime? DataDemissao { get; set; }
     public StatusFuncionarioEnum StatusFuncionario { get; set; }
-    public DateOnly VencimentoFerias { get; set; }    
+    public DateTime VencimentoFerias { get; set; }    
 }

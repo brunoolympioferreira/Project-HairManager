@@ -5,8 +5,8 @@ using HairManager.Domain.Extension;
 using HairManager.Infra;
 using HairManager.Infra.AcessoRepositories;
 using HairManager.Infra.Migrations;
+using HashidsNet;
 using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.Swagger;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -40,7 +40,7 @@ builder.Services.AddMvc(options => options.Filters.Add(typeof(FiltroDasException
 
 builder.Services.AddScoped(provider => new AutoMapper.MapperConfiguration(cfg =>
 {
-    cfg.AddProfile(new AutomapperConfiguration());
+    cfg.AddProfile(new AutomapperConfiguration(provider.GetService<IHashids>()));
 }).CreateMapper());
 
 builder.Services.AddCors(policyBuilder =>

@@ -19,17 +19,17 @@ public class EnderecoService : IEnderecoService
         _repository = repository;
     }
 
-    public async ResponseEnderecoDTO Executar(EnderecoDTO enderecoDTO)
+    public ResponseEnderecoDTO Executar(EnderecoDTO enderecoDTO)
     {
         Validar(enderecoDTO);
 
         Domain.Entities.Endereco endereco = _mapper.Map<Domain.Entities.Endereco>(enderecoDTO);
 
-        await _repository.Adicionar(endereco);
+        _repository.Adicionar(endereco);
 
-        await _unityOfWork.Commit();
+        var response = _mapper.Map<ResponseEnderecoDTO>(endereco);
 
-        return _mapper.Map<ResponseEnderecoDTO>(endereco);
+        return response;
     }
 
     private static void Validar(EnderecoDTO enderecoDTO)

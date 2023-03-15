@@ -58,7 +58,7 @@ public class AdicionarFuncionarioService : IAdicionarFuncionarioService
 
     private Domain.Entities.Funcionario FuncionarioMapping(RequestAdicionarFuncionarioDTO request)
     {
-        var endereco = _enderecoService.Executar(request.Endereco);
+        var endereco =  _enderecoService.Executar(request.Endereco);
 
         var result = new Domain.Entities.Funcionario()
         {
@@ -82,6 +82,7 @@ public class AdicionarFuncionarioService : IAdicionarFuncionarioService
 
             Endereco = new Domain.Entities.Endereco()
             {
+                Id = endereco.EnderecoId,
                 Rua = endereco.Rua,
                 Numero = endereco.Numero,
                 Complemento = endereco.Complemento,

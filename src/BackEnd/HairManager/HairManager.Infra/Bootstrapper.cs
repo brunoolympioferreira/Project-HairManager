@@ -2,6 +2,7 @@
 using HairManager.Domain.Extension;
 using HairManager.Domain.Repositories;
 using HairManager.Domain.Repositories.Funcionario;
+using HairManager.Domain.Repositories.Shared;
 using HairManager.Domain.Repositories.Usuario;
 using HairManager.Infra.AcessoRepositories;
 using HairManager.Infra.AcessoRepositories.Repositories;
@@ -63,6 +64,10 @@ public static class Bootstrapper
             .AddScoped<IUsuarioReadOnlyRepository, UsuarioRepository>()
             .AddScoped<IUsuarioWriteOnlyRepository, UsuarioRepository>()
             .AddScoped<IUsuarioUpdateOnlyRepository, UsuarioRepository>()
-            .AddScoped<IFuncionarioWriteOnlyRepository, FuncionarioRepository>();
+
+            .AddScoped<IEnderecoWriteOnlyRepository, EnderecoRepository>()
+
+            .AddScoped<IFuncionarioWriteOnlyRepository, FuncionarioRepository>()
+            .AddScoped<IFuncionarioReadOnlyRepository, FuncionarioRepository>();
     }
 }

@@ -61,6 +61,15 @@ namespace HairManager.Exceptions.ExceptionsBase {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string _string {
+            get {
+                return ResourceManager.GetString("string", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to O bairro deve ser informado..
         /// </summary>
         public static string BAIRRO_EMBRANCO {

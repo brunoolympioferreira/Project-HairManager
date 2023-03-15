@@ -52,7 +52,7 @@ public static class Bootstrapper
 
     private static void AdicionarHashIds(IServiceCollection services, IConfiguration configuration)
     {
-        var salt = configuration.GetRequiredSection("Configuracoes:HashIds:Salt");
+        var salt = configuration.GetRequiredSection("HashIds:Salt");
 
         services.AddHashids(setup =>
         {
@@ -68,6 +68,7 @@ public static class Bootstrapper
             .AddScoped<ILoginService, LoginService>()
             .AddScoped<IRecuperarPerfilService, RecuperarPerfilService>()
             .AddScoped<IAlterarSenhaService, AlterarSenhaService>()
+            .AddScoped<IAdicionarFuncionarioService, AdicionarFuncionarioService>()
             .AddScoped<IAdicionarFuncionarioService, AdicionarFuncionarioService>()
             .AddScoped<IEnderecoService, EnderecoService>();
     }

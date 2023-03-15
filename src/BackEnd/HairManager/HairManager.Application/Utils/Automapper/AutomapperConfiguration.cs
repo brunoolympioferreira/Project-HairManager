@@ -3,13 +3,17 @@ using HairManager.Comunication.DTO;
 using HairManager.Comunication.Requests;
 using HairManager.Comunication.Responses;
 using HairManager.Domain.Entities;
+using HashidsNet;
 
 namespace HairManager.Application.Utils.Automapper;
 public class AutomapperConfiguration : Profile
 {
-	public AutomapperConfiguration()
+    private readonly IHashids _hashIds;
+    public AutomapperConfiguration(IHashids hashIds)
 	{
-		RequestForEntity();
+        _hashIds = hashIds;
+
+        RequestForEntity();
 		EntityForResponse();
     }
 
@@ -25,5 +29,8 @@ public class AutomapperConfiguration : Profile
 	private void EntityForResponse()
 	{
 		CreateMap<Usuario, ResponsePerfilUsuarioDTO>();
+        CreateMap<Funcionario, ResponseBaseDTO>()
+            .ForMember(destino => destino.Id, config => config.MapFrom(origem => _hashIds.EncodeLong(origem.Id)));
+        CreateMap<Endereco, ResponseEnderecoDTO>();
 	}
 }
