@@ -42,10 +42,10 @@ public class AdicionarFuncionarioService : IAdicionarFuncionarioService
 
     private async Task Validar(RequestAdicionarFuncionarioDTO request)
     {
-        var validator = new AdicionarFuncionarioValidator();
-        var result = validator.Validate(request);
+        AdicionarFuncionarioValidator validator = new();
+        FluentValidation.Results.ValidationResult result = validator.Validate(request);
 
-        var existeFuncionarioComCPF = await _readOnlyRepository.ExisteFuncionarioComCPF(request.CPF);
+        bool existeFuncionarioComCPF = await _readOnlyRepository.ExisteFuncionarioComCPF(request.CPF);
         if (existeFuncionarioComCPF)
             result.Errors.Add(new FluentValidation.Results.ValidationFailure("cpf", ResourceMensagensDeErro.CPF_JA_CADASTRADO));
 
@@ -58,9 +58,9 @@ public class AdicionarFuncionarioService : IAdicionarFuncionarioService
 
     private Domain.Entities.Funcionario FuncionarioMapping(RequestAdicionarFuncionarioDTO request)
     {
-        //var endereco =  _enderecoService.Executar(request.Endereco);
+        Domain.Entities.Endereco endereco = _mapper.Map<Domain.Entities.Endereco>(_enderecoService.Executar(request.Endereco));
 
-        var result = new Domain.Entities.Funcionario()
+        Domain.Entities.Funcionario result = new()
         {
             Nome = request.Nome,
             Telefone = request.Telefone,
@@ -80,17 +80,7 @@ public class AdicionarFuncionarioService : IAdicionarFuncionarioService
             StatusFuncionario = (StatusFuncionarioEnum)request.StatusFuncionario,
             VencimentoFerias = request.VencimentoFerias,
 
-            Endereco = new Domain.Entities.Endereco()
-            {
-                //Id = request.Endereco.Id,
-                Rua = request.Endereco.Rua,
-                Numero = request.Endereco.Numero,
-                Complemento = request.Endereco.Complemento,
-                Bairro = request.Endereco.Bairro,
-                Cidade = request.Endereco.Cidade,
-                Estado = (EstadosEnum)request.Endereco.Estado,
-                Pais = request.Endereco.Pais
-            }
+            Endereco = endereco
         };
 
         return result;

@@ -1,22 +1,15 @@
 ﻿using AutoMapper;
 using HairManager.Comunication.DTO;
-using HairManager.Comunication.Requests;
 using HairManager.Comunication.Responses;
-using HairManager.Domain.Repositories;
-using HairManager.Domain.Repositories.Shared;
 using HairManager.Exceptions.ExceptionsBase;
 
 namespace HairManager.Application.Services.Endereco;
 public class EnderecoService : IEnderecoService
 {
-	private readonly IMapper _mapper;
-	private readonly IUnityOfWork _unityOfWork;
-    private readonly IEnderecoWriteOnlyRepository _repository;
-    public EnderecoService(IMapper mapper, IUnityOfWork unityOfWork, IEnderecoWriteOnlyRepository repository)
+    private readonly IMapper _mapper;
+    public EnderecoService(IMapper mapper)
     {
         _mapper = mapper;
-        _unityOfWork = unityOfWork;
-        _repository = repository;
     }
 
     public ResponseEnderecoDTO Executar(EnderecoDTO enderecoDTO)
@@ -25,9 +18,7 @@ public class EnderecoService : IEnderecoService
 
         Domain.Entities.Endereco endereco = _mapper.Map<Domain.Entities.Endereco>(enderecoDTO);
 
-        //_repository.Adicionar(endereco);
-
-        var response = _mapper.Map<ResponseEnderecoDTO>(endereco);
+        ResponseEnderecoDTO response = _mapper.Map<ResponseEnderecoDTO>(endereco);
 
         return response;
     }

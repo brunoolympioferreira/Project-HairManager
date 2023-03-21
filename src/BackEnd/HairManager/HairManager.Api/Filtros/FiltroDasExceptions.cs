@@ -10,7 +10,6 @@ public class FiltroDasExceptions : IExceptionFilter
 {
     public void OnException(ExceptionContext context)
     {
-        //Criar Rollback do Unity of work
         if (context.Exception is HairManagerException)
         {
             TratarHairManagerException(context);

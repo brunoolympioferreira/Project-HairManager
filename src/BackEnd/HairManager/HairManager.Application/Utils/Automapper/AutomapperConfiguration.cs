@@ -24,6 +24,7 @@ public class AutomapperConfiguration : Profile
             .ForMember(destino => destino.ConfirmeSenha, config => config.Ignore());
 
 		CreateMap<EnderecoDTO, Endereco>();
+		CreateMap<ResponseEnderecoDTO, Endereco>();
     }
 
 	private void EntityForResponse()
