@@ -3,6 +3,7 @@ using System;
 using HairManager.Infra.AcessoRepositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HairManager.Infra.Migrations
 {
     [DbContext(typeof(HairManagerContext))]
-    partial class HairManagerContextModelSnapshot : ModelSnapshot
+    [Migration("20230327174530_convertEstadoCivil")]
+    partial class convertEstadoCivil
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,9 +44,8 @@ namespace HairManager.Infra.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("Estado")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
 
                     b.Property<string>("Numero")
                         .IsRequired()
@@ -142,9 +143,8 @@ namespace HairManager.Infra.Migrations
                     b.Property<decimal>("Salario")
                         .HasColumnType("decimal(65,30)");
 
-                    b.Property<string>("StatusFuncionario")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<int>("StatusFuncionario")
+                        .HasColumnType("int");
 
                     b.Property<string>("Telefone")
                         .IsRequired()

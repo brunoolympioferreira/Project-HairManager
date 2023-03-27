@@ -16,7 +16,7 @@ public class EnderecoConfiguration : IEntityTypeConfiguration<Endereco>
         builder.Property(e => e.Complemento).HasMaxLength(200);
         builder.Property(e => e.Bairro).IsRequired().HasMaxLength(100);
         builder.Property(e => e.Cidade).IsRequired().HasMaxLength(100);
-        builder.Property(e => e.Estado).IsRequired();
+        builder.Property(e => e.Estado).IsRequired().HasConversion(typeof(string));
         builder.Property(e => e.Pais).IsRequired().HasMaxLength(50);
     }
 }

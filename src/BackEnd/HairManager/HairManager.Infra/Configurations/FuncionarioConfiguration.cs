@@ -23,9 +23,9 @@ public class FuncionarioConfiguration : IEntityTypeConfiguration<Funcionario>
         builder.Property(f => f.Reservista).IsRequired().HasMaxLength(20);
         builder.Property(f => f.Cargo).IsRequired().HasMaxLength(50);
         builder.Property(f => f.Salario).IsRequired();
-        builder.Property(f => f.EstadoCivil).IsRequired();
+        builder.Property(f => f.EstadoCivil).IsRequired().HasConversion(typeof(string));
         builder.Property(f => f.DataAdmissao).IsRequired();
-        builder.Property(f => f.StatusFuncionario).IsRequired();
+        builder.Property(f => f.StatusFuncionario).IsRequired().HasConversion(typeof(string));
         builder.Property(f => f.VencimentoFerias).IsRequired();   
     }
 }
