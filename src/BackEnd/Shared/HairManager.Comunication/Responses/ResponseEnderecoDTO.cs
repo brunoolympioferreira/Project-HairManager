@@ -3,6 +3,7 @@
 namespace HairManager.Comunication.Responses;
 public class ResponseEnderecoDTO
 {
+    public long EnderecoId { get; set; }
     public string Rua { get; set; }
     public string Numero { get; set; }
     public string Complemento { get; set; }

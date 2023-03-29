@@ -2,6 +2,7 @@
 using HairManager.Domain.Extension;
 using HairManager.Domain.Repositories;
 using HairManager.Domain.Repositories.Funcionario;
+using HairManager.Domain.Repositories.Shared;
 using HairManager.Domain.Repositories.Usuario;
 using HairManager.Infra.AcessoRepositories;
 using HairManager.Infra.AcessoRepositories.Repositories;
@@ -16,40 +17,20 @@ public static class Bootstrapper
 {
     public static void AddRepository(this IServiceCollection services, IConfiguration configuration)
     {
-        AddFluentMigrator(services, configuration);
-
         AddContexto(services, configuration);
         AddUnityOfWork(services);
         AddRepositories(services);
     }
 
-    private static void AddFluentMigrator(IServiceCollection services, IConfiguration configuration)
-    {
-        _ = bool.TryParse(configuration.GetSection("Configuracoes:BancoDeDadosInMemory").Value, out bool bancoDeDadosInMemory);
-
-        if (!bancoDeDadosInMemory)
-        {
-            services.AddFluentMigratorCore().ConfigureRunner(c =>
-            c.AddMySql5()
-            .WithGlobalConnectionString(configuration.GetConnectionComplete())
-            .ScanIn(Assembly.Load("HairManager.Infra")).For.All());
-        }
-    }
-
     private static void AddContexto(IServiceCollection services, IConfiguration configuration)
     {
-        _ = bool.TryParse(configuration.GetSection("Configuracoes:BancoDeDadosInMemory").Value, out bool bancoDeDadosInMemory);
+        var versaoServidor = new MySqlServerVersion(new Version(8, 0, 30));
+        var connectionString = configuration.GetConnectionComplete();
 
-        if (!bancoDeDadosInMemory)
+        services.AddDbContext<HairManagerContext>(options =>
         {
-            var versaoServidor = new MySqlServerVersion(new Version(8, 0, 30));
-            var connectionString = configuration.GetConnectionComplete();
-
-            services.AddDbContext<HairManagerContext>(options =>
-            {
-                options.UseMySql(connectionString, versaoServidor);
-            });
-        }
+            options.UseMySql(connectionString, versaoServidor);
+        });
     }
 
     private static void AddUnityOfWork(IServiceCollection services)
@@ -63,6 +44,10 @@ public static class Bootstrapper
             .AddScoped<IUsuarioReadOnlyRepository, UsuarioRepository>()
             .AddScoped<IUsuarioWriteOnlyRepository, UsuarioRepository>()
             .AddScoped<IUsuarioUpdateOnlyRepository, UsuarioRepository>()
-            .AddScoped<IFuncionarioWriteOnlyRepository, FuncionarioRepository>();
+
+            .AddScoped<IEnderecoWriteOnlyRepository, EnderecoRepository>()
+
+            .AddScoped<IFuncionarioWriteOnlyRepository, FuncionarioRepository>()
+            .AddScoped<IFuncionarioReadOnlyRepository, FuncionarioRepository>();
     }
 }

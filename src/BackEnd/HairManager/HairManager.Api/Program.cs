@@ -4,10 +4,10 @@ using HairManager.Application.Utils.Automapper;
 using HairManager.Domain.Extension;
 using HairManager.Infra;
 using HairManager.Infra.AcessoRepositories;
-using HairManager.Infra.Migrations;
+using HashidsNet;
 using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.Swagger;
 using System.Reflection;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,7 +15,10 @@ builder.Services.AddRouting(option => option.LowercaseUrls = true);
 
 builder.Services.AddHttpContextAccessor();
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(x =>
+{
+    x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+});
 
 builder.Services.AddEndpointsApiExplorer();
 
@@ -40,7 +43,7 @@ builder.Services.AddMvc(options => options.Filters.Add(typeof(FiltroDasException
 
 builder.Services.AddScoped(provider => new AutoMapper.MapperConfiguration(cfg =>
 {
-    cfg.AddProfile(new AutomapperConfiguration());
+    cfg.AddProfile(new AutomapperConfiguration(provider.GetService<IHashids>()));
 }).CreateMapper());
 
 builder.Services.AddCors(policyBuilder =>
@@ -67,26 +70,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-AtualizarBaseDeDados();
-
 app.Run();
-
-void AtualizarBaseDeDados()
-{
-    using var serviceScope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope();
-    using var context = serviceScope.ServiceProvider.GetService<HairManagerContext>();
-
-    bool? databaseInMemory = context?.Database?.ProviderName?.Equals("Microsoft.EntityFrameworkCore.InMemory");
-
-    if (!databaseInMemory.HasValue || !databaseInMemory.Value)
-    {
-        var conexao = builder.Configuration.GetConnection();
-        var nomeDatabase = builder.Configuration.GetDatabaseName();
-
-        Database.CriarDatabase(conexao, nomeDatabase);
-
-        app.MigrateBancoDeDados();
-    }
-}
 
 public partial class Program { }

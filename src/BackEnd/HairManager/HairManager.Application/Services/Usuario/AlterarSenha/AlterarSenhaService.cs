@@ -34,6 +34,7 @@ public class AlterarSenhaService : IAlterarSenhaService
 
         usuario.Senha = _encriptadorSenha.CriptografarSenha(request.NovaSenha);
         usuario.ConfirmeSenha = _encriptadorSenha.CriptografarConfirmeSenha(request.ConfirmeNovaSenha);
+        usuario.UpdatedAt = DateTime.Now;
 
         _repository.Update(usuario);
 

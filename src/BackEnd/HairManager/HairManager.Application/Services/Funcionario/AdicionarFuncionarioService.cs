@@ -37,15 +37,15 @@ public class AdicionarFuncionarioService : IAdicionarFuncionarioService
 
         await _unityOfWork.Commit();
 
-        return _mapper.Map<ResponseBaseDTO>(request);
+        return _mapper.Map<ResponseBaseDTO>(funcionario);
     }
 
     private async Task Validar(RequestAdicionarFuncionarioDTO request)
     {
-        var validator = new AdicionarFuncionarioValidator();
-        var result = validator.Validate(request);
+        AdicionarFuncionarioValidator validator = new();
+        FluentValidation.Results.ValidationResult result = validator.Validate(request);
 
-        var existeFuncionarioComCPF = await _readOnlyRepository.ExisteFuncionarioComCPF(request.CPF);
+        bool existeFuncionarioComCPF = await _readOnlyRepository.ExisteFuncionarioComCPF(request.CPF);
         if (existeFuncionarioComCPF)
             result.Errors.Add(new FluentValidation.Results.ValidationFailure("cpf", ResourceMensagensDeErro.CPF_JA_CADASTRADO));
 
@@ -58,9 +58,9 @@ public class AdicionarFuncionarioService : IAdicionarFuncionarioService
 
     private Domain.Entities.Funcionario FuncionarioMapping(RequestAdicionarFuncionarioDTO request)
     {
-        var endereco = _enderecoService.Executar(request.Endereco);
+        Domain.Entities.Endereco endereco = _mapper.Map<Domain.Entities.Endereco>(_enderecoService.Executar(request.Endereco));
 
-        var result = new Domain.Entities.Funcionario()
+        Domain.Entities.Funcionario result = new()
         {
             Nome = request.Nome,
             Telefone = request.Telefone,
@@ -78,18 +78,9 @@ public class AdicionarFuncionarioService : IAdicionarFuncionarioService
             DataAdmissao = request.DataAdmissao,
             DataDemissao = request.DataDemissao,
             StatusFuncionario = (StatusFuncionarioEnum)request.StatusFuncionario,
-            VencimentoFerias = request.VencimentoFerias,
+            VencimentoFerias = request.DataAdmissao.AddYears(1),
 
-            Endereco = new Domain.Entities.Endereco()
-            {
-                Rua = endereco.Rua,
-                Numero = endereco.Numero,
-                Complemento = endereco.Complemento,
-                Bairro = endereco.Bairro,
-                Cidade = endereco.Cidade,
-                Estado = (EstadosEnum)endereco.Estado,
-                Pais = endereco.Pais
-            }
+            Endereco = endereco
         };
 
         return result;

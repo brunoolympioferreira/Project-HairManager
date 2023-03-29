@@ -46,6 +46,6 @@ public class FiltroDasExceptions : IExceptionFilter
     private static void LancarErroDesconhecido(ExceptionContext context)
     {
         context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-        context.Result = new ObjectResult(new ResponseErroDTO(ResourceMensagensDeErro.ERRO_DESCONHECIDO));
+        context.Result = new ObjectResult(context.Exception.Message);
     }
 }
