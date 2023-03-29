@@ -21,5 +21,4 @@ public class RequestAdicionarFuncionarioDTO
     public DateTime DataAdmissao { get; set; }
     public DateTime? DataDemissao { get; set; }
     public StatusFuncionarioEnum StatusFuncionario { get; set; }
-    public DateTime VencimentoFerias { get; set; }    
 }

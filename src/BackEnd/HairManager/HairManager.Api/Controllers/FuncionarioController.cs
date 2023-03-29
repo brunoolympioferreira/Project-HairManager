@@ -1,11 +1,12 @@
-﻿using HairManager.Application.Services.Funcionario;
+﻿using HairManager.Api.Filtros;
+using HairManager.Application.Services.Funcionario;
 using HairManager.Comunication.Requests;
 using HairManager.Comunication.Responses;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HairManager.Api.Controllers;
 
-//[ServiceFilter(typeof(UsuarioAutenticadoAttribute))]
+[ServiceFilter(typeof(UsuarioAutenticadoAttribute))]
 [Route("api/[controller]")]
 [ApiController]
 public class FuncionarioController : HairManagerController

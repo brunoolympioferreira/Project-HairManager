@@ -78,7 +78,7 @@ public class AdicionarFuncionarioService : IAdicionarFuncionarioService
             DataAdmissao = request.DataAdmissao,
             DataDemissao = request.DataDemissao,
             StatusFuncionario = (StatusFuncionarioEnum)request.StatusFuncionario,
-            VencimentoFerias = request.VencimentoFerias,
+            VencimentoFerias = request.DataAdmissao.AddYears(1),
 
             Endereco = endereco
         };

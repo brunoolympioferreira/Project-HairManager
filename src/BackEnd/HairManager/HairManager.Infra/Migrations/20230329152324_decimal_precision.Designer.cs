@@ -3,6 +3,7 @@ using System;
 using HairManager.Infra.AcessoRepositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HairManager.Infra.Migrations
 {
     [DbContext(typeof(HairManagerContext))]
-    partial class HairManagerContextModelSnapshot : ModelSnapshot
+    [Migration("20230329152324_decimal_precision")]
+    partial class decimal_precision
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
