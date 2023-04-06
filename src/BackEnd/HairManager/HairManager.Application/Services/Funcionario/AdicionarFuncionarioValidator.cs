@@ -9,11 +9,18 @@ public class AdicionarFuncionarioValidator : AbstractValidator<RequestAdicionarF
     public AdicionarFuncionarioValidator()
     {
         RuleFor(c => c.Nome)
-            .NotEmpty().WithMessage(ResourceMensagensDeErro.NOME_FUNCIONARIO_EMBRANCO)
-            .Length(3, 50).WithMessage(ResourceMensagensDeErro.NOME_FUNCIONARIO_INVALIDO);
+            .NotEmpty().WithMessage(ResourceMensagensDeErro.NOME_FUNCIONARIO_EMBRANCO);
+        When(c => !string.IsNullOrWhiteSpace(c.Nome), () =>
+        {
+            RuleFor(c => c.Nome).Length(3, 50).WithMessage(ResourceMensagensDeErro.NOME_FUNCIONARIO_INVALIDO);
+        });
+
         RuleFor(c => c.Telefone)
-            .NotEmpty().WithMessage(ResourceMensagensDeErro.TELEFONE_FUNCIONARIO_EMBRANCO)
-            .Phone().WithMessage(ResourceMensagensDeErro.TELEFONE_FUNCIONARIO_INVALIDO);
+            .NotEmpty().WithMessage(ResourceMensagensDeErro.TELEFONE_FUNCIONARIO_EMBRANCO);
+        When(c => !string.IsNullOrWhiteSpace(c.Telefone), () =>
+        {
+            RuleFor(c => c.Telefone).Phone().WithMessage(ResourceMensagensDeErro.TELEFONE_FUNCIONARIO_INVALIDO);
+        });
         RuleFor(c => c.DataNascimento)
             .NotEmpty().WithMessage(ResourceMensagensDeErro.DATA_EMBRANCO);
         RuleFor(c => c.Nacionalidade)
@@ -23,17 +30,20 @@ public class AdicionarFuncionarioValidator : AbstractValidator<RequestAdicionarF
         RuleFor(c => c.CTPSSerie)
             .NotEmpty().WithMessage(ResourceMensagensDeErro.CTPS_SERIE_EMBRANCO);
         RuleFor(c => c.CPF)
-            .NotEmpty().WithMessage(ResourceMensagensDeErro.CPF_EMBRANCO)
-            .IsValidCPF().WithMessage(ResourceMensagensDeErro.CPF_INVALIDO);
+            .NotEmpty().WithMessage(ResourceMensagensDeErro.CPF_EMBRANCO);          
+        When(c => !string.IsNullOrWhiteSpace(c.CPF), () =>
+        {
+            RuleFor(c => c.CPF).IsValidCPF().WithMessage(ResourceMensagensDeErro.CPF_INVALIDO);
+        });
         RuleFor(c => c.RG)
             .NotEmpty().WithMessage(ResourceMensagensDeErro.RG_EMBRANCO);
         RuleFor(c => c.PIS)
             .NotEmpty().WithMessage(ResourceMensagensDeErro.PIS_EMBRANCO);
         RuleFor(c => c.Cargo)
             .NotEmpty().WithMessage(ResourceMensagensDeErro.CARGO_EMBRANCO);
+
         RuleFor(c => c.Salario)
-            .NotEmpty().WithMessage(ResourceMensagensDeErro.SALARIO_EMBRANCO)
-            .GreaterThanOrEqualTo(0).WithMessage(ResourceMensagensDeErro.SALARIO_INVALIDO);
+            .GreaterThan(0).WithMessage(ResourceMensagensDeErro.SALARIO_INVALIDO);
         RuleFor(c => c.DataAdmissao)
             .NotEmpty().WithMessage(ResourceMensagensDeErro.DATA_EMBRANCO);
     }

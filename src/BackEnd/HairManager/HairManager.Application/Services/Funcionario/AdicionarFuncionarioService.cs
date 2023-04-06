@@ -15,7 +15,8 @@ public class AdicionarFuncionarioService : IAdicionarFuncionarioService
     private readonly IFuncionarioWriteOnlyRepository _repository;
     private readonly IEnderecoService _enderecoService;
     private readonly IFuncionarioReadOnlyRepository _readOnlyRepository;
-    public AdicionarFuncionarioService(IMapper mapper,
+    public AdicionarFuncionarioService(
+        IMapper mapper,
         IUnityOfWork unityOfWork,
         IFuncionarioWriteOnlyRepository repository,
         IEnderecoService enderecoService,

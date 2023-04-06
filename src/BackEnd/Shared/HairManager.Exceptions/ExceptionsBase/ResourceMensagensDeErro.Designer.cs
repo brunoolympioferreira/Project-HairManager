@@ -304,7 +304,7 @@ namespace HairManager.Exceptions.ExceptionsBase {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Insira um valor maior que zero..
+        ///   Looks up a localized string similar to Salario invalido, insira um valor maior que zero..
         /// </summary>
         public static string SALARIO_INVALIDO {
             get {
