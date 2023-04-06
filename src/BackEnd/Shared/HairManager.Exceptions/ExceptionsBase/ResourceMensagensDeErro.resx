@@ -196,7 +196,7 @@
     <value>O Salário do funcionário deve ser informado.</value>
   </data>
   <data name="SALARIO_INVALIDO" xml:space="preserve">
-    <value>Insira um valor maior que zero.</value>
+    <value>Salario invalido, insira um valor maior que zero.</value>
   </data>
   <data name="SENHAS_NAO_CONFEREM" xml:space="preserve">
     <value>As senhas informadas não conferem.</value>

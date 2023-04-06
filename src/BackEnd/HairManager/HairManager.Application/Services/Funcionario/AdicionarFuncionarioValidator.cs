@@ -43,7 +43,7 @@ public class AdicionarFuncionarioValidator : AbstractValidator<RequestAdicionarF
             .NotEmpty().WithMessage(ResourceMensagensDeErro.CARGO_EMBRANCO);
 
         RuleFor(c => c.Salario)
-            .LessThan(0).WithMessage(ResourceMensagensDeErro.SALARIO_INVALIDO);
+            .GreaterThan(0).WithMessage(ResourceMensagensDeErro.SALARIO_INVALIDO);
         RuleFor(c => c.DataAdmissao)
             .NotEmpty().WithMessage(ResourceMensagensDeErro.DATA_EMBRANCO);
     }
