@@ -6,10 +6,18 @@
     <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#itens">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="itens">
-      <ul class="navbar-nav ms-auto">
-        <app-menu-login></app-menu-login>
-      </ul>
+    <div class="collapse navbar-collapse d-sm-inline-flex flex-sm-row-reverse" id="itens">
+      <app-menu-login></app-menu-login>
+
+      <div class="dropdown flex-grow-1">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Funcionário
+        </a>
+
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" [routerLink]="['/funcionario/adicionar']">Adicionar</a></li>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>
