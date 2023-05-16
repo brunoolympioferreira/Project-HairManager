@@ -4,6 +4,7 @@ import { StatusFuncionarioEnum } from "./enums/statusFuncionarioEnum";
 
 export interface Funcionario {
   id: number,
+  nome: string,
   telefone: string,
   dataNascimento: Date,
   nacionalidade: string,
