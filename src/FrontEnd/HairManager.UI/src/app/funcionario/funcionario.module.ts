@@ -5,10 +5,12 @@ import { RouterModule } from "@angular/router";
 import { FuncionarioRountingModule } from "./funcionario.route";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import { AdicionarFuncionarioComponent } from "./adicionar-funcionario/adicionar-funcionario.component";
 
 @NgModule({
   declarations: [
     FuncionarioAppComponent,
+    AdicionarFuncionarioComponent,
   ],
   imports: [
     CommonModule,

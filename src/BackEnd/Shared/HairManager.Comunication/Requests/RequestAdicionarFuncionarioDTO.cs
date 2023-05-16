@@ -19,6 +19,6 @@ public class RequestAdicionarFuncionarioDTO
     public decimal Salario { get; set; }
     public EstadoCivilEnum EstadoCivil { get; set; }
     public DateTime DataAdmissao { get; set; }
-    public DateTime? DataDemissao { get; set; }
+    public DateTime? DataDemissao { get; set; } // Esse campo nao serve para registro de funcionario
     public StatusFuncionarioEnum StatusFuncionario { get; set; }
 }
