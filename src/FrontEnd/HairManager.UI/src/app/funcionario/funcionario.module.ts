@@ -6,6 +6,7 @@ import { FuncionarioRountingModule } from "./funcionario.route";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { AdicionarFuncionarioComponent } from "./adicionar-funcionario/adicionar-funcionario.component";
+import { FuncionarioService } from "./services/funcionario.service";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { AdicionarFuncionarioComponent } from "./adicionar-funcionario/adicionar
 
   ],
   providers: [
-
+    FuncionarioService
   ]
 })
 export class FuncionarioModule { }

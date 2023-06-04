@@ -22,6 +22,7 @@ import { MenuLoginComponent } from './menu-login/menu-login.component';
     HomeComponent,
     NotFoundComponent,
     MenuLoginComponent,
+    MenuComponent
   ],
   imports: [
     CommonModule,

@@ -1,7 +1,7 @@
 <div class="container main-container">
   <h2 class="text-center">Cadastrar Funcionário</h2>
   <hr>
-  <form [formGroup]="adicionarFuncionarioForm">
+  <form novalidate (ngSubmit)="adicionarFuncionario()" [formGroup]="adicionarFuncionarioForm">
     <div class="row pt-3">
 
       <div class="col-4 form-group mt-2 p-2">
@@ -181,108 +181,119 @@
       <h3 class="text-center">Endereço</h3>
       <hr>
 
-      <div class="col-4 form-group mt-2 p-2">
-        <label class="mx-auto control-label" for="">Rua/Avenida:</label>
-        <div>
-          <input class="form-control" type="text" formControlName="rua" id="rua"
-            [ngClass]="{'is-invalid': displayMessage.rua }" placeholder="Rua/Avenida">
-          <span class="text-danger" *ngIf="displayMessage.rua">
-            <p class="mb-1" [innerHTML]="displayMessage.rua"></p>
-          </span>
+      <div formGroupName="endereco" class="row pt-3">
+        <div class="col-4 form-group mt-2 p-2">
+          <label class="mx-auto control-label" for="">Rua/Avenida:</label>
+          <div>
+            <input class="form-control" type="text" formControlName="rua" id="rua"
+              [ngClass]="{'is-invalid': displayMessage.rua }" placeholder="Rua/Avenida">
+            <span class="text-danger" *ngIf="displayMessage.rua">
+              <p class="mb-1" [innerHTML]="displayMessage.rua"></p>
+            </span>
+          </div>
+        </div>
+
+        <div class="col-2 form-group mt-2 p-2">
+          <label class="mx-auto control-label" for="">Número</label>
+          <div>
+            <input class="form-control" type="text" formControlName="numero" id="numero"
+              [ngClass]="{'is-invalid': displayMessage.numero }" placeholder="Número">
+            <span class="text-danger" *ngIf="displayMessage.numero">
+              <p class="mb-1" [innerHTML]="displayMessage.numero"></p>
+            </span>
+          </div>
+        </div>
+
+        <div class="col-4 form-group mt-2 p-2">
+          <label class="mx-auto control-label" for="">Complemento</label>
+          <div>
+            <input class="form-control" type="text" formControlName="complemento" id="complemento"
+              placeholder="Complemento">
+          </div>
+        </div>
+
+        <div class="col-4 form-group mt-2 p-2">
+          <label class="mx-auto control-label" for="">Bairro</label>
+          <div>
+            <input class="form-control" type="text" formControlName="bairro" id="bairro"
+              [ngClass]="{'is-invalid': displayMessage.bairro }" placeholder="Bairro">
+            <span class="text-danger" *ngIf="displayMessage.bairro">
+              <p class="mb-1" [innerHTML]="displayMessage.bairro"></p>
+            </span>
+          </div>
+        </div>
+
+        <div class="col-4 form-group mt-2 p-2">
+          <label class="mx-auto control-label" for="">Cidade</label>
+          <div>
+            <input class="form-control" type="text" formControlName="cidade" id="cidade"
+              [ngClass]="{'is-invalid': displayMessage.cidade }" placeholder="Cidade">
+            <span class="text-danger" *ngIf="displayMessage.cidade">
+              <p class="mb-1" [innerHTML]="displayMessage.cidade"></p>
+            </span>
+          </div>
+        </div>
+
+        <div class="col-2 form-group mt-2 p-2">
+          <label class="control-label">Estado</label>
+          <div>
+            <select class="form-select" id="estado" formControlName="estado"
+              [ngClass]="{'is-invalid': displayMessage.estado}">
+              <option value="">Estado</option>
+              <option value="0">Acre</option>
+              <option value="1">Alagoas</option>
+              <option value="2">Amapá</option>
+              <option value="3">Amazonas</option>
+              <option value="4">Bahia</option>
+              <option value="5">Ceará</option>
+              <option value="6">Distrito Federal</option>
+              <option value="7">Espírito Santo</option>
+              <option value="8">Goiás</option>
+              <option value="9">Maranhão</option>
+              <option value="10">Mato Grosso</option>
+              <option value="11">Mato Grosso do Sul</option>
+              <option value="12">Minas Gerais</option>
+              <option value="13">Pará</option>
+              <option value="14">Paraíba</option>
+              <option value="15">Paraná</option>
+              <option value="16">Pernambuco</option>
+              <option value="17">Piauí</option>
+              <option value="18">Rio de Janeiro</option>
+              <option value="19">Rio Grande do Norte</option>
+              <option value="20">Rio Grande do Sul</option>
+              <option value="21">Rondônia</option>
+              <option value="22">Roraima</option>
+              <option value="23">Santa Catarina</option>
+              <option value="24">São Paulo</option>
+              <option value="25">Sergipe</option>
+              <option value="26">Tocantins</option>
+            </select>
+            <span class="text-danger" *ngIf="displayMessage.estado">
+              <p class="mb-1" [innerHTML]="displayMessage.estado"></p>
+            </span>
+          </div>
+        </div>
+
+        <div class="col-2 form-group mt-2 p-2">
+          <label class="mx-auto control-label" for="">País</label>
+          <div>
+            <input class="form-control" type="text" formControlName="pais" id="pais"
+              [ngClass]="{'is-invalid': displayMessage.pais }" placeholder="País">
+            <span class="text-danger" *ngIf="displayMessage.pais">
+              <p class="mb-1" [innerHTML]="displayMessage.pais"></p>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group mt-2 p-2">
+          <div class="col-md-4 col-md-offset-2">
+            <span><button class="btn btn-success" id="Registrar" [disabled]="!adicionarFuncionarioForm.valid"
+                type="submit">Salvar</button></span>
+          </div>
         </div>
       </div>
 
-      <div class="col-2 form-group mt-2 p-2">
-        <label class="mx-auto control-label" for="">Número</label>
-        <div>
-          <input class="form-control" type="text" formControlName="numero" id="numero"
-            [ngClass]="{'is-invalid': displayMessage.numero }" placeholder="Número">
-          <span class="text-danger" *ngIf="displayMessage.numero">
-            <p class="mb-1" [innerHTML]="displayMessage.numero"></p>
-          </span>
-        </div>
-      </div>
 
-      <div class="col-4 form-group mt-2 p-2">
-        <label class="mx-auto control-label" for="">Complemento</label>
-        <div>
-          <input class="form-control" type="text" formControlName="complemento" id="complemento"
-            placeholder="Complemento">
-        </div>
-      </div>
-
-      <div class="col-4 form-group mt-2 p-2">
-        <label class="mx-auto control-label" for="">Bairro</label>
-        <div>
-          <input class="form-control" type="text" formControlName="bairro" id="bairro"
-            [ngClass]="{'is-invalid': displayMessage.bairro }" placeholder="Bairro">
-          <span class="text-danger" *ngIf="displayMessage.bairro">
-            <p class="mb-1" [innerHTML]="displayMessage.bairro"></p>
-          </span>
-        </div>
-      </div>
-
-      <div class="col-4 form-group mt-2 p-2">
-        <label class="mx-auto control-label" for="">Cidade</label>
-        <div>
-          <input class="form-control" type="text" formControlName="cidade" id="cidade"
-            [ngClass]="{'is-invalid': displayMessage.cidade }" placeholder="Cidade">
-          <span class="text-danger" *ngIf="displayMessage.cidade">
-            <p class="mb-1" [innerHTML]="displayMessage.cidade"></p>
-          </span>
-        </div>
-      </div>
-
-      <div class="col-2 form-group mt-2 p-2">
-        <label class="control-label">Estado</label>
-        <div>
-          <select class="form-select" id="estado" formControlName="estado"
-            [ngClass]="{'is-invalid': displayMessage.estado}">
-            <option value="">Estado</option>
-            <option value="0">Acre</option>
-            <option value="1">Alagoas</option>
-            <option value="2">Amapá</option>
-            <option value="3">Amazonas</option>
-            <option value="4">Bahia</option>
-            <option value="5">Ceará</option>
-            <option value="6">Distrito Federal</option>
-            <option value="7">Espírito Santo</option>
-            <option value="8">Goiás</option>
-            <option value="9">Maranhão</option>
-            <option value="10">Mato Grosso</option>
-            <option value="11">Mato Grosso do Sul</option>
-            <option value="12">Minas Gerais</option>
-            <option value="13">Pará</option>
-            <option value="14">Paraíba</option>
-            <option value="15">Paraná</option>
-            <option value="16">Pernambuco</option>
-            <option value="17">Piauí</option>
-            <option value="18">Rio de Janeiro</option>
-            <option value="19">Rio Grande do Norte</option>
-            <option value="20">Rio Grande do Sul</option>
-            <option value="21">Rondônia</option>
-            <option value="22">Roraima</option>
-            <option value="23">Santa Catarina</option>
-            <option value="24">São Paulo</option>
-            <option value="25">Sergipe</option>
-            <option value="26">Tocantins</option>
-          </select>
-          <span class="text-danger" *ngIf="displayMessage.estado">
-            <p class="mb-1" [innerHTML]="displayMessage.estado"></p>
-          </span>
-        </div>
-      </div>
-
-      <div class="col-2 form-group mt-2 p-2">
-        <label class="mx-auto control-label" for="">País</label>
-        <div>
-          <input class="form-control" type="text" formControlName="pais" id="pais"
-            [ngClass]="{'is-invalid': displayMessage.pais }" placeholder="País">
-          <span class="text-danger" *ngIf="displayMessage.pais">
-            <p class="mb-1" [innerHTML]="displayMessage.pais"></p>
-          </span>
-        </div>
-      </div>
 
     </div>
   </form>
