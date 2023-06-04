@@ -9,8 +9,9 @@
     <div class="collapse navbar-collapse d-sm-inline-flex flex-sm-row-reverse" id="itens">
       <app-menu-login></app-menu-login>
 
-      <div class="dropdown flex-grow-1">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <div [ngSwitch]="usuarioLogado()" class="dropdown flex-grow-1">
+        <a *ngSwitchCase="true" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
           Funcionário
         </a>
 

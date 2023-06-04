@@ -5,6 +5,9 @@ import { FormBaseComponent } from 'src/app/base/form-base-component';
 //Utils
 import { Funcionario } from '../models/funcionario';
 import { Endereco } from 'src/app/base/models/endereco';
+import { FuncionarioService } from '../services/funcionario.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-adicionar-funcionario',
@@ -20,6 +23,9 @@ export class AdicionarFuncionarioComponent extends FormBaseComponent implements 
 
   constructor(
     private fb: FormBuilder,
+    private funcionarioService: FuncionarioService,
+    private router: Router,
+    private toastr: ToastrService
   ) {
     super();
 
@@ -105,22 +111,53 @@ export class AdicionarFuncionarioComponent extends FormBaseComponent implements 
       estadoCivil: [Number, [Validators.required]],
       dataAdmissao: [Date, [Validators.required]],
       statusFuncionario: [Number, [Validators.required]],
-      rua: ['', [Validators.required]],
-      numero: ['', [Validators.required]],
-      complemento: [''],
-      bairro: ['', [Validators.required]],
-      cidade: ['', [Validators.required]],
-      estado: [Number, [Validators.required]],
-      pais: ['', [Validators.required]],
+      endereco: this.fb.group({
+        rua: ['', [Validators.required]],
+        numero: ['', [Validators.required]],
+        complemento: [''],
+        bairro: ['', [Validators.required]],
+        cidade: ['', [Validators.required]],
+        estado: [Number, [Validators.required]],
+        pais: ['', [Validators.required]]
+      })
     });
 
   }
 
   ngAfterViewInit(): void {
     super.configurarValidacaoFormularioBase(this.formInputElements, this.adicionarFuncionarioForm);
+    super.validarFormulario(this.adicionarFuncionarioForm)
   }
 
-  adicionarFuncionario() { }
-  processarSucesso() { }
-  processarFalha() { }
+  adicionarFuncionario() {
+    if (this.adicionarFuncionarioForm.dirty && this.adicionarFuncionarioForm.valid) {
+      this.funcionario = Object.assign({}, this.funcionario, this.adicionarFuncionarioForm.value);
+
+      this.funcionarioService.registrarFuncionario(this.funcionario)
+        .subscribe(
+          sucesso => { this.processarSucesso(sucesso) },
+          falha => { this.processarFalha(falha) }
+        );
+      console.log(this.funcionario)
+    }
+  }
+
+  processarSucesso(response: any) {
+    this.adicionarFuncionarioForm.reset();
+    this.errors = [];
+
+    let toast = this.toastr.success('Registro realizado com sucesso!', 'Funcionario Adicionado')
+
+    if (toast) {
+      toast.onHidden.subscribe(() => {
+        this.router.navigate(['/home'])
+      });
+    }
+
+  }
+
+  processarFalha(fail: any) {
+    this.errors = fail.error.errors;
+    this.toastr.error('Ocurreu um erro!', 'Opa :(');
+  }
 }
