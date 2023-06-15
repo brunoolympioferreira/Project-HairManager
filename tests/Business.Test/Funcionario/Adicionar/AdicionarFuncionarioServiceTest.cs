@@ -2,7 +2,7 @@
 using Business.Test.Endereco;
 using FluentAssertions;
 using HairManager.Application.Services.Endereco;
-using HairManager.Application.Services.Funcionario;
+using HairManager.Application.Services.Funcionario.Adicionar;
 using HairManager.Comunication.Requests;
 using HairManager.Comunication.Responses;
 using HairManager.Domain.Repositories;

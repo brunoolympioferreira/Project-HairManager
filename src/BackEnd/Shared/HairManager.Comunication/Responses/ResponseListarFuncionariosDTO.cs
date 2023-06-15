@@ -1,7 +1,7 @@
 ﻿using HairManager.Comunication.Enums;
 
 namespace HairManager.Comunication.Responses;
-public class ResponseListarFuncionariosDTO : ResponseBaseDTO
+public class ResponseListarFuncionariosDTO
 {
     public string Nome { get; set; }
     public string CPF { get; set; }

@@ -1,5 +1,6 @@
 ﻿using HairManager.Api.Filtros;
-using HairManager.Application.Services.Funcionario;
+using HairManager.Application.Services.Funcionario.Adicionar;
+using HairManager.Application.Services.Funcionario.Listar;
 using HairManager.Comunication.Requests;
 using HairManager.Comunication.Responses;
 using Microsoft.AspNetCore.Mvc;
@@ -20,5 +21,12 @@ public class FuncionarioController : HairManagerController
         var response = await service.Executar(request);
 
         return Created(string.Empty, response);
+    }
+
+    [HttpGet]
+    [ProducesResponseType(typeof(ResponseListarFuncionariosDTO),StatusCodes.Status200OK)]
+    public async Task<IActionResult> ListarFuncionarios([FromServices] IListarFuncionariosService service)
+    {
+        return Ok(await service.Executar());
     }
 }

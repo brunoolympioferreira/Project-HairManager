@@ -7,7 +7,7 @@ using HairManager.Domain.Repositories;
 using HairManager.Domain.Repositories.Funcionario;
 using HairManager.Exceptions.ExceptionsBase;
 
-namespace HairManager.Application.Services.Funcionario;
+namespace HairManager.Application.Services.Funcionario.Adicionar;
 public class AdicionarFuncionarioService : IAdicionarFuncionarioService
 {
     private readonly IMapper _mapper;

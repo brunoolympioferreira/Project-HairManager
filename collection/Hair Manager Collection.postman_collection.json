@@ -55,7 +55,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"email\": \"usertest@email.com\",\r\n  \"senha\": \"123456\"\r\n}",
+							"raw": "{\r\n  \"email\": \"bruno@email.com\",\r\n  \"senha\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -118,7 +118,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"senhaAtual\": \"654321\",\r\n  \"novaSenha\": \"123456\",\r\n  \"confirmeNovaSenha\": \"123456\"\r\n}",
+							"raw": "{\r\n  \"senhaAtual\": \"123456\",\r\n  \"novaSenha\": \"142536\",\r\n  \"confirmeNovaSenha\": \"142536\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -133,6 +133,112 @@
 							"path": [
 								"usuario",
 								"alterar-senha"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Funcionario",
+			"item": [
+				{
+					"name": "Adicionar Funcionario",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"function cpf() {\r",
+									"  const rnd = (n) => Math.round(Math.random() * n);\r",
+									"  const mod = (base, div) => Math.round(base - Math.floor(base / div) * div)\r",
+									"  const n = Array(9).fill('').map(() => rnd(9));\r",
+									"\r",
+									"  let d1 = n.reduce((total, number, index) => (total + (number * (10 - index))), 0)\r",
+									"  d1 = 11 - mod(d1, 11);\r",
+									"  if (d1 >= 10) d1 = 0;\r",
+									"  \r",
+									"  let d2 = (d1 * 2) + n.reduce((total, number, index) => (total + (number * (11 - index))), 0)\r",
+									"  d2 = 11 - mod(d2, 11);\r",
+									"  if (d2 >= 10) d2 = 0;\r",
+									"\r",
+									"  return `${n.join('')}${d1}${d2}`\r",
+									"}\r",
+									"\r",
+									"// opicional para postman\r",
+									"pm.environment.set('cpf', cpf());\r",
+									"\r",
+									"//telefone\r",
+									"var ddd = _.random(10, 99)\r",
+									"var numeroAdicional = _.random(1, 9)\r",
+									"var primeiros4Digitos = _.random(1000, 9999)\r",
+									"var ultimos4Digitos = _.random(1000, 9999)\r",
+									"\r",
+									"var numeroTelefone = ddd + numeroAdicional + primeiros4Digitos + ultimos4Digitos\r",
+									"\r",
+									"pm.environment.set(\"numeroTelefone\", numeroTelefone)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"{{$randomFullName}}\",\r\n  \"telefone\": \"011987067012\",\r\n  \"dataNascimento\": \"1986-07-02\",\r\n  \"nacionalidade\": \"Brasileiro\",\r\n  \"endereco\": {\r\n    \"rua\": \"{{$randomStreetName}}\",\r\n    \"numero\": \"1500\",\r\n    \"complemento\": null,\r\n    \"bairro\": \"Vila do Teste\",\r\n    \"cidade\": \"{{$randomCity}}\",\r\n    \"estado\": \"ES\",\r\n    \"pais\": \"Brasil\"\r\n  },\r\n  \"ctpsNumero\": \"203698\",\r\n  \"ctpsSerie\": \"200\",\r\n  \"cpf\": \"{{cpf}}\",\r\n  \"rg\": \"140338445\",\r\n  \"pis\": \"90552750510\",\r\n  \"reservista\": \"232323\",\r\n  \"cargo\": \"Cabelereiro\",\r\n  \"salario\": 4000,\r\n  \"estadoCivil\": \"Divorciado\",\r\n  \"dataAdmissao\": \"2023-03-13\",\r\n  \"dataDemissao\": null,\r\n  \"statusFuncionario\": \"Ativo\",\r\n  \"vencimentoFerias\": \"2023-03-13T18:17:46.945Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URLBASE_HAIR}}/funcionario",
+							"host": [
+								"{{URLBASE_HAIR}}"
+							],
+							"path": [
+								"funcionario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Funcionarios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URLBASE_HAIR}}/funcionario",
+							"host": [
+								"{{URLBASE_HAIR}}"
+							],
+							"path": [
+								"funcionario"
 							]
 						}
 					},
