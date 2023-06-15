@@ -33,5 +33,6 @@ public class AutomapperConfiguration : Profile
         CreateMap<Funcionario, ResponseBaseDTO>()
             .ForMember(destino => destino.Id, config => config.MapFrom(origem => _hashIds.EncodeLong(origem.Id)));
         CreateMap<Endereco, ResponseEnderecoDTO>();
-	}
+        CreateMap<Funcionario, ResponseListarFuncionariosDTO>();
+    }
 }

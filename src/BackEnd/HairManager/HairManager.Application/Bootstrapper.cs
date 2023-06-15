@@ -1,5 +1,6 @@
 ﻿using HairManager.Application.Services.Endereco;
-using HairManager.Application.Services.Funcionario;
+using HairManager.Application.Services.Funcionario.Adicionar;
+using HairManager.Application.Services.Funcionario.Listar;
 using HairManager.Application.Services.Usuario.AlterarSenha;
 using HairManager.Application.Services.Usuario.Login;
 using HairManager.Application.Services.Usuario.RecuperarPerfil;
@@ -70,6 +71,7 @@ public static class Bootstrapper
             .AddScoped<IAlterarSenhaService, AlterarSenhaService>()
             .AddScoped<IAdicionarFuncionarioService, AdicionarFuncionarioService>()
             .AddScoped<IAdicionarFuncionarioService, AdicionarFuncionarioService>()
-            .AddScoped<IEnderecoService, EnderecoService>();
+            .AddScoped<IEnderecoService, EnderecoService>()
+            .AddScoped<IListarFuncionariosService, ListarFuncionariosService>();
     }
 }

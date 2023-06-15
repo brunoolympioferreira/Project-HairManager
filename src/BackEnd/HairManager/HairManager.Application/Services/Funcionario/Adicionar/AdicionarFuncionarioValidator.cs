@@ -3,7 +3,7 @@ using HairManager.Application.Utils.FluentValidatorExtensions;
 using HairManager.Comunication.Requests;
 using HairManager.Exceptions.ExceptionsBase;
 
-namespace HairManager.Application.Services.Funcionario;
+namespace HairManager.Application.Services.Funcionario.Adicionar;
 public class AdicionarFuncionarioValidator : AbstractValidator<RequestAdicionarFuncionarioDTO>
 {
     public AdicionarFuncionarioValidator()
@@ -30,7 +30,7 @@ public class AdicionarFuncionarioValidator : AbstractValidator<RequestAdicionarF
         RuleFor(c => c.CTPSSerie)
             .NotEmpty().WithMessage(ResourceMensagensDeErro.CTPS_SERIE_EMBRANCO);
         RuleFor(c => c.CPF)
-            .NotEmpty().WithMessage(ResourceMensagensDeErro.CPF_EMBRANCO);          
+            .NotEmpty().WithMessage(ResourceMensagensDeErro.CPF_EMBRANCO);
         When(c => !string.IsNullOrWhiteSpace(c.CPF), () =>
         {
             RuleFor(c => c.CPF).IsValidCPF().WithMessage(ResourceMensagensDeErro.CPF_INVALIDO);

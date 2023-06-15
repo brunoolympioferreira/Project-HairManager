@@ -19,4 +19,9 @@ public class FuncionarioRepository : IFuncionarioWriteOnlyRepository, IFuncionar
     {
         return await _context.Funcionarios.AnyAsync(f => f.CPF.Equals(cpf));
     }
+
+    public async Task<IList<Funcionario>> GetAllFuncionarios()
+    {
+        return await _context.Funcionarios.ToListAsync();
+    }
 }
