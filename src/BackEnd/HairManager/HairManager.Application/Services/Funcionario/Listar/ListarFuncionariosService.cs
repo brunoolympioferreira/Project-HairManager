@@ -7,12 +7,10 @@ namespace HairManager.Application.Services.Funcionario.Listar;
 public class ListarFuncionariosService : IListarFuncionariosService
 {
     private readonly IFuncionarioReadOnlyRepository _repository;
-    private readonly IUsuarioLogado _usuarioLogado;
     private readonly IMapper _mapper;
-    public ListarFuncionariosService(IFuncionarioReadOnlyRepository repository, IUsuarioLogado usuarioLogado, IMapper mapper)
+    public ListarFuncionariosService(IFuncionarioReadOnlyRepository repository, IMapper mapper)
     {
         _repository = repository;
-        _usuarioLogado = usuarioLogado;
         _mapper = mapper;
     }
 

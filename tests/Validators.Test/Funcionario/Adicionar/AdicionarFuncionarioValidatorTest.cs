@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using HairManager.Application.Services.Endereco;
 using HairManager.Application.Services.Funcionario;
+using HairManager.Application.Services.Funcionario.Adicionar;
 using HairManager.Exceptions.ExceptionsBase;
 using UtilsForTests.Requests;
 using Xunit;
