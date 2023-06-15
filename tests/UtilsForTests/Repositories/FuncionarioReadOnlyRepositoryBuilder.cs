@@ -1,5 +1,7 @@
-﻿using HairManager.Domain.Repositories.Funcionario;
+﻿using HairManager.Domain.Entities;
+using HairManager.Domain.Repositories.Funcionario;
 using Moq;
+using System.Collections.Generic;
 
 namespace UtilsForTests.Repositories;
 public class FuncionarioReadOnlyRepositoryBuilder
@@ -16,6 +18,13 @@ public class FuncionarioReadOnlyRepositoryBuilder
     {
         _intance = new FuncionarioReadOnlyRepositoryBuilder();
         return _intance;
+    }
+
+    public FuncionarioReadOnlyRepositoryBuilder RecuperarTodosFuncionarios(Funcionario funcionario)
+    {
+        if (funcionario is not null)
+             _repository.Setup(f => f.GetAllFuncionarios()).ReturnsAsync(new List<Funcionario> { funcionario });
+        return this;
     }
 
     public IFuncionarioReadOnlyRepository Construir => _repository.Object;
