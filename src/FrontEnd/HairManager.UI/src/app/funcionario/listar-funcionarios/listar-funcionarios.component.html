@@ -1,0 +1,35 @@
+<div class="container main-container">
+    <h1>Lista de Funcionários</h1>
+
+    <p>
+        <a class="btn btn-info" [routerLink]="['/funcionario/adicionar']">Novo Funcionário</a>
+    </p>
+
+    <table class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Cargo</th>
+                <th>Data Admissão</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tr *ngFor="let funcionario of funcionarios">
+            <td>{{funcionario.nome}}</td>
+            <td>{{funcionario.cpf}}</td>
+            <td>{{funcionario.cargo}}</td>
+            <td>{{funcionario.dataAdmissao}}</td>
+            <td>{{funcionario.statusFuncionario}}</td>
+            <td class="text-right">
+                <a class="btn btn-info" [routerLink]="['/home']">
+                    <i class="bi bi-pencil-fill"></i>
+                </a>&nbsp;
+                <a class="btn btn-warning" [routerLink]="['/home']">
+                    <i class="fa fa-search"></i>
+                </a>
+            </td>
+
+        </tr>
+    </table>
+</div>

@@ -7,11 +7,13 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { AdicionarFuncionarioComponent } from "./adicionar-funcionario/adicionar-funcionario.component";
 import { FuncionarioService } from "./services/funcionario.service";
+import { ListarFuncionariosComponent } from './listar-funcionarios/listar-funcionarios.component';
 
 @NgModule({
   declarations: [
     FuncionarioAppComponent,
     AdicionarFuncionarioComponent,
+    ListarFuncionariosComponent,
   ],
   imports: [
     CommonModule,
