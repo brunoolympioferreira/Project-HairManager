@@ -24,4 +24,11 @@ public class FuncionarioRepository : IFuncionarioWriteOnlyRepository, IFuncionar
     {
         return await _context.Funcionarios.ToListAsync();
     }
+
+    public async Task<Funcionario> GetFuncionarioPorId(long id)
+    {
+        return await _context.Funcionarios
+            .Include(e => e.Endereco)
+            .FirstOrDefaultAsync(f => f.Id == id);
+    }
 }
