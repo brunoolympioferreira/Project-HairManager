@@ -205,6 +205,15 @@ namespace HairManager.Exceptions.ExceptionsBase {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Funcionario não encontrado em nossa base de dados..
+        /// </summary>
+        public static string FUNCIONARIO_NAO_ENCONTRADO {
+            get {
+                return ResourceManager.GetString("FUNCIONARIO_NAO_ENCONTRADO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to O e-mail e/ou senha estão incorretas..
         /// </summary>
         public static string LOGIN_INVALIDO {
