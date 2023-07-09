@@ -1,7 +1,7 @@
 ﻿using HairManager.Comunication.Responses;
 
 namespace HairManager.Application.Services.Funcionario.RecuperarPorId;
-public interface IRecuperarFuncionarioPorId
+public interface IRecuperarFuncionarioPorIdService
 {
     Task<ResponseFuncionarioDetalhesDTO> Executar(long id);
 }

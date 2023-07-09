@@ -1,25 +1,26 @@
 ﻿using AutoMapper;
 using HairManager.Comunication.Responses;
+using HairManager.Domain.Entities;
 using HairManager.Domain.Repositories.Funcionario;
 using HairManager.Exceptions.ExceptionsBase;
 
 namespace HairManager.Application.Services.Funcionario.RecuperarPorId;
-public class RecuperarFuncionarioPorId : IRecuperarFuncionarioPorId
+public class RecuperarFuncionarioPorIdService : IRecuperarFuncionarioPorIdService
 {
     private readonly IFuncionarioReadOnlyRepository _repository;
     private readonly IMapper _mapper;
-    public RecuperarFuncionarioPorId(IFuncionarioReadOnlyRepository repository, IMapper mapper)
+    public RecuperarFuncionarioPorIdService(IFuncionarioReadOnlyRepository repository, IMapper mapper)
     {
         _repository = repository;
         _mapper = mapper;
     }
     public async Task<ResponseFuncionarioDetalhesDTO> Executar(long id)
     {
-        var funcionario = await _repository.GetFuncionarioPorId(id);
+        Domain.Entities.Funcionario funcionario = await _repository.GetFuncionarioPorId(id);
 
         Validar(funcionario);
 
-        return _mapper.Map<ResponseFuncionarioDetalhesDTO>(funcionario);
+        return _mapper.Map<Domain.Entities.Funcionario, ResponseFuncionarioDetalhesDTO>(funcionario);
     }
 
     public static void Validar(Domain.Entities.Funcionario funcionario)

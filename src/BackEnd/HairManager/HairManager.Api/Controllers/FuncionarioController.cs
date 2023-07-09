@@ -1,6 +1,8 @@
-﻿using HairManager.Api.Filtros;
+﻿using AspNetCore.Hashids.Mvc;
+using HairManager.Api.Filtros;
 using HairManager.Application.Services.Funcionario.Adicionar;
 using HairManager.Application.Services.Funcionario.Listar;
+using HairManager.Application.Services.Funcionario.RecuperarPorId;
 using HairManager.Comunication.Requests;
 using HairManager.Comunication.Responses;
 using Microsoft.AspNetCore.Mvc;
@@ -18,15 +20,25 @@ public class FuncionarioController : HairManagerController
         [FromServices] IAdicionarFuncionarioService service,
         [FromBody] RequestAdicionarFuncionarioDTO request)
     {
-        var response = await service.Executar(request);
+        ResponseBaseDTO response = await service.Executar(request);
 
         return Created(string.Empty, response);
     }
 
     [HttpGet]
-    [ProducesResponseType(typeof(ResponseListarFuncionariosDTO),StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ResponseListarFuncionariosDTO), StatusCodes.Status200OK)]
     public async Task<IActionResult> ListarFuncionarios([FromServices] IListarFuncionariosService service)
     {
         return Ok(await service.Executar());
+    }
+
+    [HttpGet("{id}")]
+    [ProducesResponseType(typeof(ResponseFuncionarioDetalhesDTO), StatusCodes.Status200OK)]
+    public async Task<IActionResult> RecuperarPorId(
+        [FromServices] IRecuperarFuncionarioPorIdService service, 
+        [FromRoute] long id)
+    {
+        ResponseFuncionarioDetalhesDTO response = await service.Executar(id);
+        return Ok(response);
     }
 }

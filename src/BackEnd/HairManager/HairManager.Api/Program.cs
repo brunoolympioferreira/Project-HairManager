@@ -43,7 +43,7 @@ builder.Services.AddMvc(options => options.Filters.Add(typeof(FiltroDasException
 
 builder.Services.AddScoped(provider => new AutoMapper.MapperConfiguration(cfg =>
 {
-    cfg.AddProfile(new AutomapperConfiguration(provider.GetService<IHashids>()));
+    cfg.AddProfile(new AutomapperConfiguration());
 }).CreateMapper());
 
 builder.Services.AddCors(policyBuilder =>
