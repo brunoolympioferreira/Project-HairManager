@@ -23,7 +23,13 @@ public class FuncionarioReadOnlyRepositoryBuilder
     public FuncionarioReadOnlyRepositoryBuilder RecuperarTodosFuncionarios(Funcionario funcionario)
     {
         if (funcionario is not null)
-             _repository.Setup(f => f.GetAllFuncionarios()).ReturnsAsync(new List<Funcionario> { funcionario });
+            _repository.Setup(f => f.GetAllFuncionarios()).ReturnsAsync(new List<Funcionario> { funcionario });
+        return this;
+    }
+
+    public FuncionarioReadOnlyRepositoryBuilder RecuperarPorId(Funcionario funcionario)
+    {
+        _repository.Setup(f => f.GetFuncionarioPorId(funcionario.Id)).ReturnsAsync(funcionario);
         return this;
     }
 
