@@ -26,6 +26,7 @@ public class FuncionarioBuilder
             .RuleFor(c => c.EstadoCivil, f => f.Random.Enum<EstadoCivilEnum>())
             .RuleFor(c => c.DataAdmissao, f => f.Date.Recent())
             .RuleFor(c => c.StatusFuncionario, f => f.Random.Enum<StatusFuncionarioEnum>())
-            .RuleFor(c => c.EnderecoId, _ => 1);
+            .RuleFor(c => c.EnderecoId, _ => 1)
+            .RuleFor(e => e.Endereco, e => EnderecoBuilder.Construir());
     }
 }
