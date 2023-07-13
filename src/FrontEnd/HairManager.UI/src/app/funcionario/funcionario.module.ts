@@ -8,12 +8,14 @@ import { HttpClientModule } from "@angular/common/http";
 import { AdicionarFuncionarioComponent } from "./adicionar-funcionario/adicionar-funcionario.component";
 import { FuncionarioService } from "./services/funcionario.service";
 import { ListarFuncionariosComponent } from './listar-funcionarios/listar-funcionarios.component';
+import { DetalhesFuncionarioComponent } from './detalhes-funcionario/detalhes-funcionario.component';
 
 @NgModule({
   declarations: [
     FuncionarioAppComponent,
     AdicionarFuncionarioComponent,
     ListarFuncionariosComponent,
+    DetalhesFuncionarioComponent,
   ],
   imports: [
     CommonModule,
