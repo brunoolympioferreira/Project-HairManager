@@ -19,13 +19,13 @@
             <td>{{funcionario.nome}}</td>
             <td>{{funcionario.cpf}}</td>
             <td>{{funcionario.cargo}}</td>
-            <td>{{funcionario.dataAdmissao}}</td>
+            <td>{{funcionario.dataAdmissao | date:'dd/MM/yyyy'}}</td>
             <td>{{funcionario.statusFuncionario}}</td>
             <td class="text-right">
-                <a class="btn btn-info" [routerLink]="['/funcionario/detalhes/1']">
+                <a class="btn btn-info" [routerLink]="['/home']">
                     <i class="bi bi-pencil-fill"></i>
                 </a>&nbsp;
-                <a class="btn btn-warning" [routerLink]="['/home']">
+                <a class="btn btn-warning" [routerLink]="['/funcionario/detalhes', funcionario.id]">
                     <i class="fa fa-search"></i>
                 </a>
             </td>

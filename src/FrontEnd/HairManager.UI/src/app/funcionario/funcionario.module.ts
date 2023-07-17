@@ -9,6 +9,7 @@ import { AdicionarFuncionarioComponent } from "./adicionar-funcionario/adicionar
 import { FuncionarioService } from "./services/funcionario.service";
 import { ListarFuncionariosComponent } from './listar-funcionarios/listar-funcionarios.component';
 import { DetalhesFuncionarioComponent } from './detalhes-funcionario/detalhes-funcionario.component';
+import { FuncionarioResolve } from "./services/funcionario.resolve";
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { DetalhesFuncionarioComponent } from './detalhes-funcionario/detalhes-fu
 
   ],
   providers: [
-    FuncionarioService
+    FuncionarioService,
+    FuncionarioResolve
   ]
 })
 export class FuncionarioModule { }

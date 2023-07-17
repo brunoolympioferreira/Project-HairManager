@@ -7,112 +7,112 @@
                 <label class="control-label">Nome</label>
             </dt>
             <dd class="col-sm-4">
-                Funcionario.Nome
+                {{funcionario.nome}}
             </dd>
 
             <dt class="col-sm-2">
                 <label class="control-label">Telefone</label>
             </dt>
             <dd class="col-sm-4">
-                Funcionario.Telefone
+                {{funcionario.telefone}}
             </dd>
 
             <dt class="col-sm-2">
                 <label class="control-label">Data Nascimento</label>
             </dt>
             <dd class="col-sm-4">
-                Funcionario.DataNascimento
+                {{funcionario.dataNascimento | date:'dd/MM/yyyy'}}
             </dd>
 
             <dt class="col-sm-2">
                 <label class="control-label">Nacionalidade</label>
             </dt>
             <dd class="col-sm-4">
-                Funcionario.Nacionalidade
+                {{funcionario.nacionalidade}}
             </dd>
 
             <dt class="col-sm-2">
                 <label class="control-label">Número CTPS</label>
             </dt>
             <dd class="col-sm-4">
-                Funcionario.NumeroCTPS
+                {{funcionario.ctpsNumero}}
             </dd>
 
             <dt class="col-sm-2">
                 <label class="control-label">Série CTPS</label>
             </dt>
             <dd class="col-sm-4">
-                Funcionario.SerieCTPS
+                {{funcionario.ctpsSerie}}
             </dd>
 
             <dt class="col-sm-2">
                 <label class="control-label">CPF</label>
             </dt>
             <dd class="col-sm-4">
-                Funcionario.CPF
+                {{funcionario.cpf}}
             </dd>
 
             <dt class="col-sm-2">
                 <label class="control-label">RG</label>
             </dt>
             <dd class="col-sm-4">
-                Funcionario.RG
+                {{funcionario.rg}}
             </dd>
 
             <dt class="col-sm-2">
                 <label class="control-label">PIS</label>
             </dt>
             <dd class="col-sm-4">
-                Funcionario.PIS
+                {{funcionario.pis}}
             </dd>
 
             <dt class="col-sm-2">
                 <label class="control-label">Reservista</label>
             </dt>
             <dd class="col-sm-4">
-                Funcionario.Reservista
+                {{funcionario.reservista}}
             </dd>
 
             <dt class="col-sm-2">
                 <label class="control-label">Cargo</label>
             </dt>
             <dd class="col-sm-4">
-                Funcionario.Cargo
+                {{funcionario.cargo}}
             </dd>
 
             <dt class="col-sm-2">
                 <label class="control-label">Salário</label>
             </dt>
             <dd class="col-sm-4">
-                Funcionario.Salario
+                {{funcionario.salario | currency}}
             </dd>
 
             <dt class="col-sm-2">
                 <label class="control-label">Estado Civil</label>
             </dt>
             <dd class="col-sm-4">
-                Funcionario.EstadoCivil
+                {{funcionario.estadoCivil}}
             </dd>
 
             <dt class="col-sm-2">
                 <label class="control-label">Data Admissão</label>
             </dt>
             <dd class="col-sm-4">
-                Funcionario.DataAdmissao
+                {{funcionario.dataAdmissao | date:'dd/MM/yyyy'}}
             </dd>
 
             <dt class="col-sm-2">
                 <label class="control-label">Data Demissão</label>
             </dt>
             <dd class="col-sm-4">
-                Funcionario.DataDemissao
+                {{funcionario.dataDemissao | date:'dd/MM/yyyy'}}
             </dd>
 
             <dt class="col-sm-2">
                 <label class="control-label">Status</label>
             </dt>
             <dd class="col-sm-4">
-                Funcionario.Status
+                {{funcionario.statusFuncionario}}
             </dd>
         </dl>
     </div>
@@ -122,49 +122,49 @@
             <label class="control-label">Rua</label>
         </dt>
         <dd class="col-sm-4">
-            Funcionario.Endereco.Rua
+            {{funcionario.endereco.rua}}
         </dd>
 
         <dt class="col-sm-2">
             <label class="control-label">Numero</label>
         </dt>
         <dd class="col-sm-4">
-            Funcionario.Endereco.Numero
+            {{funcionario.endereco.numero}}
         </dd>
 
         <dt class="col-sm-2">
             <label class="control-label">Complemento</label>
         </dt>
         <dd class="col-sm-4">
-            Funcionario.Endereco.Complemento
+            {{funcionario.endereco.complemento}}
         </dd>
 
         <dt class="col-sm-2">
             <label class="control-label">Bairro</label>
         </dt>
         <dd class="col-sm-4">
-            Funcionario.Endereco.Bairro
+            {{funcionario.endereco.bairro}}
         </dd>
 
         <dt class="col-sm-2">
             <label class="control-label">Cidade</label>
         </dt>
         <dd class="col-sm-4">
-            Funcionario.Endereco.Cidade
+            {{funcionario.endereco.cidade}}
         </dd>
 
         <dt class="col-sm-2">
             <label class="control-label">Estado</label>
         </dt>
         <dd class="col-sm-4">
-            Funcionario.Endereco.Estado
+            {{funcionario.endereco.estado}}
         </dd>
 
         <dt class="col-sm-2">
             <label class="control-label">País</label>
         </dt>
         <dd class="col-sm-4">
-            Funcionario.Endereco.País
+            {{funcionario.endereco.pais}}
         </dd>
     </dl>
     <hr>
