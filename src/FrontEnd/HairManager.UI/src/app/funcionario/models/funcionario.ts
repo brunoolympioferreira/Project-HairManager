@@ -10,7 +10,7 @@ export interface Funcionario {
   nacionalidade: string,
   endereco: Endereco,
   ctpsNumero: string,
-  ctspSerie: string,
+  ctpsSerie: string,
   cpf: string,
   rg: string,
   pis: string,
