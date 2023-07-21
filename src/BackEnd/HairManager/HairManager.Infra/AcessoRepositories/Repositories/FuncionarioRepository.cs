@@ -3,7 +3,7 @@ using HairManager.Domain.Repositories.Funcionario;
 using Microsoft.EntityFrameworkCore;
 
 namespace HairManager.Infra.AcessoRepositories.Repositories;
-public class FuncionarioRepository : IFuncionarioWriteOnlyRepository, IFuncionarioReadOnlyRepository
+public class FuncionarioRepository : IFuncionarioWriteOnlyRepository, IFuncionarioReadOnlyRepository, IFuncionarioUpdateOnlyRepository
 {
     private readonly HairManagerContext _context;
     public FuncionarioRepository(HairManagerContext context)
@@ -30,5 +30,10 @@ public class FuncionarioRepository : IFuncionarioWriteOnlyRepository, IFuncionar
         return await _context.Funcionarios
             .Include(e => e.Endereco)
             .FirstOrDefaultAsync(f => f.Id == id);
+    }
+
+    public void Update(Funcionario funcionario)
+    {
+        _context.Funcionarios.Update(funcionario);
     }
 }
