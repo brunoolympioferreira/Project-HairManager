@@ -1,5 +1,6 @@
 ﻿using HairManager.Application.Services.Endereco;
 using HairManager.Application.Services.Funcionario.Adicionar;
+using HairManager.Application.Services.Funcionario.Atualizar;
 using HairManager.Application.Services.Funcionario.Listar;
 using HairManager.Application.Services.Funcionario.RecuperarPorId;
 using HairManager.Application.Services.Usuario.AlterarSenha;
@@ -19,7 +20,6 @@ public static class Bootstrapper
     {
         AdicionarChaveAdiconalSenha(services, configuration);
         AdicionarChaveAdiconalConfirmeSenha(services, configuration);
-        AdicionarHashIds(services, configuration);
         AdicionarTokenJWT(services, configuration);
         AdicionarServices(services);
         AdicionarUsuarioLogado(services);
@@ -52,17 +52,6 @@ public static class Bootstrapper
         services.AddScoped(option => new TokenController(int.Parse(sectionTempoDeVida.Value), sectionKey.Value));
     }
 
-    private static void AdicionarHashIds(IServiceCollection services, IConfiguration configuration)
-    {
-        var salt = configuration.GetRequiredSection("HashIds:Salt");
-
-        services.AddHashids(setup =>
-        {
-            setup.Salt = salt.Value;
-            setup.MinHashLength = 3;
-        });
-    }
-
     private static void AdicionarServices(IServiceCollection services)
     {
         services
@@ -74,6 +63,7 @@ public static class Bootstrapper
             .AddScoped<IAdicionarFuncionarioService, AdicionarFuncionarioService>()
             .AddScoped<IEnderecoService, EnderecoService>()
             .AddScoped<IListarFuncionariosService, ListarFuncionariosService>()
-            .AddScoped<IRecuperarFuncionarioPorIdService, RecuperarFuncionarioPorIdService>();
+            .AddScoped<IRecuperarFuncionarioPorIdService, RecuperarFuncionarioPorIdService>()
+            .AddScoped<IAtualizarFuncionarioService, AtualizarFuncionarioService>();
     }
 }

@@ -243,6 +243,71 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Recuperar FuncionarioPorId",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URLBASE_HAIR}}/funcionario/2",
+							"host": [
+								"{{URLBASE_HAIR}}"
+							],
+							"path": [
+								"funcionario",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Funcionario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"telefone\": \"011987067015\",\r\n  \"endereco\": {\r\n    \"rua\": \"Rua Paraguai\",\r\n    \"numero\": \"4000\",\r\n    \"complemento\": \"proximo da padaria\",\r\n    \"bairro\": \"Brooklin\",\r\n    \"cidade\": \"Santo Andre\",\r\n    \"estado\": \"SP\",\r\n    \"pais\": \"Brasil\"\r\n  },\r\n  \"cargo\": \"Cabelereiro Senior\",\r\n  \"salario\": 9000,\r\n  \"estadoCivil\": \"Solteiro\",\r\n  \"dataDemissao\": null,\r\n  \"statusFuncionario\": \"Ativo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URLBASE_HAIR}}/funcionario/2",
+							"host": [
+								"{{URLBASE_HAIR}}"
+							],
+							"path": [
+								"funcionario",
+								"2"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}

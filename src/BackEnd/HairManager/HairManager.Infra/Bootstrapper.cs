@@ -48,6 +48,7 @@ public static class Bootstrapper
             .AddScoped<IEnderecoWriteOnlyRepository, EnderecoRepository>()
 
             .AddScoped<IFuncionarioWriteOnlyRepository, FuncionarioRepository>()
-            .AddScoped<IFuncionarioReadOnlyRepository, FuncionarioRepository>();
+            .AddScoped<IFuncionarioReadOnlyRepository, FuncionarioRepository>()
+            .AddScoped<IFuncionarioUpdateOnlyRepository, FuncionarioRepository>();
     }
 }

@@ -22,6 +22,9 @@ public class AtualizarFuncionarioService : IAtualizarFuncionarioService
 
         Validar(request, funcionario);
 
+        funcionario.UpdatedAt = DateTime.Now;
+        funcionario.Endereco.UpdatedAt = DateTime.Now;
+
         _mapper.Map(request, funcionario);
 
         _repository.Update(funcionario);
