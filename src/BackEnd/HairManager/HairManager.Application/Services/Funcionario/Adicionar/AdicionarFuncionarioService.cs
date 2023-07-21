@@ -28,7 +28,7 @@ public class AdicionarFuncionarioService : IAdicionarFuncionarioService
         _enderecoService = enderecoService;
         _readOnlyRepository = readOnlyRepository;
     }
-    public async Task<ResponseBaseDTO> Executar(RequestAdicionarFuncionarioDTO request)
+    public async Task<ResponseBaseDTO> Executar(RequestFuncionarioDTO request)
     {
         await Validar(request);
 
@@ -41,7 +41,7 @@ public class AdicionarFuncionarioService : IAdicionarFuncionarioService
         return _mapper.Map<ResponseBaseDTO>(funcionario);
     }
 
-    private async Task Validar(RequestAdicionarFuncionarioDTO request)
+    private async Task Validar(RequestFuncionarioDTO request)
     {
         AdicionarFuncionarioValidator validator = new();
         FluentValidation.Results.ValidationResult result = validator.Validate(request);
@@ -57,7 +57,7 @@ public class AdicionarFuncionarioService : IAdicionarFuncionarioService
         }
     }
 
-    private Domain.Entities.Funcionario FuncionarioMapping(RequestAdicionarFuncionarioDTO request)
+    private Domain.Entities.Funcionario FuncionarioMapping(RequestFuncionarioDTO request)
     {
         Domain.Entities.Endereco endereco = _mapper.Map<Domain.Entities.Endereco>(_enderecoService.Executar(request.Endereco));
 

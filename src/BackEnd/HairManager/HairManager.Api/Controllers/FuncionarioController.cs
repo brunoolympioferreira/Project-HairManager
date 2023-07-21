@@ -1,6 +1,7 @@
 ﻿using AspNetCore.Hashids.Mvc;
 using HairManager.Api.Filtros;
 using HairManager.Application.Services.Funcionario.Adicionar;
+using HairManager.Application.Services.Funcionario.Atualizar;
 using HairManager.Application.Services.Funcionario.Listar;
 using HairManager.Application.Services.Funcionario.RecuperarPorId;
 using HairManager.Comunication.Requests;
@@ -18,7 +19,7 @@ public class FuncionarioController : HairManagerController
     [ProducesResponseType(typeof(ResponseBaseDTO), StatusCodes.Status201Created)]
     public async Task<IActionResult> Adicionar(
         [FromServices] IAdicionarFuncionarioService service,
-        [FromBody] RequestAdicionarFuncionarioDTO request)
+        [FromBody] RequestFuncionarioDTO request)
     {
         ResponseBaseDTO response = await service.Executar(request);
 
@@ -40,5 +41,17 @@ public class FuncionarioController : HairManagerController
     {
         ResponseFuncionarioDetalhesDTO response = await service.Executar(id);
         return Ok(response);
+    }
+
+    [HttpPut("{id}")]
+    [ProducesResponseType(typeof(ResponseBaseDTO), StatusCodes.Status204NoContent)]
+    public async Task<IActionResult> AtualizarFuncionario(
+        [FromServices] IAtualizarFuncionarioService service,
+        [FromBody] RequestUpdateFuncionarioDTO request,
+        [FromRoute] long id)
+    {
+        await service.Executar(id, request);
+
+        return NoContent();
     }
 }

@@ -2,7 +2,7 @@
 using HairManager.Comunication.Enums;
 
 namespace HairManager.Comunication.Requests;
-public class RequestAdicionarFuncionarioDTO
+public class RequestFuncionarioDTO
 {
     public string Nome { get; set; }
     public string Telefone { get; set; }
