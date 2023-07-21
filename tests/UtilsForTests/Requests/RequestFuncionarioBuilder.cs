@@ -8,9 +8,9 @@ using System;
 namespace UtilsForTests.Requests;
 public class RequestFuncionarioBuilder
 {
-    public static RequestAdicionarFuncionarioDTO Construir()
+    public static RequestFuncionarioDTO Construir()
     {
-        return new Faker<RequestAdicionarFuncionarioDTO>()
+        return new Faker<RequestFuncionarioDTO>()
             .RuleFor(c => c.Nome, f => f.Person.FullName)
             .RuleFor(c => c.Telefone, f => f.Phone.PhoneNumber("############"))
             .RuleFor(c => c.DataNascimento, f => f.Date.Past(60, DateTime.Now.AddYears(-16)))

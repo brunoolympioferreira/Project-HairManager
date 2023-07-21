@@ -4,7 +4,7 @@ using HairManager.Comunication.Requests;
 using HairManager.Exceptions.ExceptionsBase;
 
 namespace HairManager.Application.Services.Funcionario.Adicionar;
-public class AdicionarFuncionarioValidator : AbstractValidator<RequestAdicionarFuncionarioDTO>
+public class AdicionarFuncionarioValidator : AbstractValidator<RequestFuncionarioDTO>
 {
     public AdicionarFuncionarioValidator()
     {

@@ -24,7 +24,7 @@ public class AdicionarFuncionarioServiceTest
 
         AdicionarFuncionarioService service = CriarService(funcionario);
 
-        RequestAdicionarFuncionarioDTO request = RequestFuncionarioBuilder.Construir();
+        RequestFuncionarioDTO request = RequestFuncionarioBuilder.Construir();
         ResponseBaseDTO response = await service.Executar(request);
 
         response.Should().NotBeNull();

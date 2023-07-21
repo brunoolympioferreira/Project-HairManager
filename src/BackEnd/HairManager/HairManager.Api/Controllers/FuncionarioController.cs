@@ -18,7 +18,7 @@ public class FuncionarioController : HairManagerController
     [ProducesResponseType(typeof(ResponseBaseDTO), StatusCodes.Status201Created)]
     public async Task<IActionResult> Adicionar(
         [FromServices] IAdicionarFuncionarioService service,
-        [FromBody] RequestAdicionarFuncionarioDTO request)
+        [FromBody] RequestFuncionarioDTO request)
     {
         ResponseBaseDTO response = await service.Executar(request);
 
