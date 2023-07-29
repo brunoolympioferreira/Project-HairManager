@@ -16,6 +16,5 @@ public class EnderecoBuilder
             .RuleFor(e => e.Cidade, r => r.Address.City())
             .RuleFor(e => e.Estado, r => r.Random.Enum<EstadosEnum>())
             .RuleFor(e => e.Pais, r => "Brasil");
-
     }
 }
