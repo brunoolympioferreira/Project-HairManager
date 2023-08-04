@@ -10,6 +10,7 @@ import { FuncionarioService } from "./services/funcionario.service";
 import { ListarFuncionariosComponent } from './listar-funcionarios/listar-funcionarios.component';
 import { DetalhesFuncionarioComponent } from './detalhes-funcionario/detalhes-funcionario.component';
 import { FuncionarioResolve } from "./services/funcionario.resolve";
+import { EditarFuncionarioComponent } from './editar-funcionario/editar-funcionario.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { FuncionarioResolve } from "./services/funcionario.resolve";
     AdicionarFuncionarioComponent,
     ListarFuncionariosComponent,
     DetalhesFuncionarioComponent,
+    EditarFuncionarioComponent,
   ],
   imports: [
     CommonModule,
