@@ -19,7 +19,12 @@ const funcionarioRouterConfig: Routes = [
           funcionario: FuncionarioResolve
         }
       },
-      { path: 'editar/1', component: EditarFuncionarioComponent }
+      {
+        path: 'editar/:id', component: EditarFuncionarioComponent,
+        resolve: {
+          funcionario: FuncionarioResolve
+        }
+      }
     ]
   }
 ]

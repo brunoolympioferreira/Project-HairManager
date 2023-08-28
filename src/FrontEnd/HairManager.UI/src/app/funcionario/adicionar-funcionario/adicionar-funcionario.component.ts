@@ -4,7 +4,6 @@ import { FormBuilder, FormControlName, FormGroup, Validators } from '@angular/fo
 import { FormBaseComponent } from 'src/app/base/form-base-component';
 //Utils
 import { Funcionario } from '../models/funcionario';
-import { Endereco } from 'src/app/base/models/endereco';
 import { FuncionarioService } from '../services/funcionario.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';

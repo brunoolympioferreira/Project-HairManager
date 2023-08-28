@@ -1,3 +1,4 @@
+import { Endereco } from 'src/app/base/models/endereco';
 import { FuncionarioService } from './../services/funcionario.service';
 import { Funcionario } from './../models/funcionario';
 import { Component, ElementRef, OnInit, ViewChildren } from '@angular/core';
@@ -11,6 +12,7 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './editar-funcionario.component.html'
 })
 export class EditarFuncionarioComponent extends FormBaseComponent implements OnInit {
+
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
 
   errors: any[] = [];
@@ -18,11 +20,10 @@ export class EditarFuncionarioComponent extends FormBaseComponent implements OnI
   editarFuncionarioForm: FormGroup;
 
   funcionario: Funcionario;
-
   textoDocumento: string = '';
 
   constructor(private fb: FormBuilder,
-    private FuncionarioService: FuncionarioService,
+    private funcionarioService: FuncionarioService,
     private router: Router,
     private toastr: ToastrService,
     private route: ActivatedRoute) {
@@ -92,10 +93,12 @@ export class EditarFuncionarioComponent extends FormBaseComponent implements OnI
     };
     super.configurarMensagensValidacaoBase(this.validationMessages);
 
-    this.route.snapshot.data['funcionario'];
+    this.funcionario = this.route.snapshot.data['funcionario'];
+    console.log(this.funcionario)
+    console.log(this.funcionario.endereco.rua)
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.editarFuncionarioForm = this.fb.group({
       nome: [{ value: '', disabled: true }, [Validators.required]],
       telefone: ['', [Validators.required]],
@@ -111,7 +114,7 @@ export class EditarFuncionarioComponent extends FormBaseComponent implements OnI
       salario: [Number, [Validators.required]],
       estadoCivil: [Number, [Validators.required]],
       dataAdmissao: [{ value: Date, disabled: true }, [Validators.required]],
-      //add data demissao
+      dataDemissao: [Date],
       statusFuncionario: [Number, [Validators.required]],
       endereco: this.fb.group({
         rua: ['', [Validators.required]],
@@ -127,22 +130,66 @@ export class EditarFuncionarioComponent extends FormBaseComponent implements OnI
   }
 
   preencherForm() {
-
+    this.editarFuncionarioForm.patchValue({
+      nome: this.funcionario.nome,
+      telefone: this.funcionario.telefone,
+      dataNascimento: this.funcionario.dataNascimento,
+      nacionalidade: this.funcionario.nacionalidade,
+      ctpsNumero: this.funcionario.ctpsNumero,
+      ctpsSerie: this.funcionario.ctpsSerie,
+      cpf: this.funcionario.cpf,
+      rg: this.funcionario.rg,
+      pis: this.funcionario.pis,
+      reservista: this.funcionario.reservista,
+      cargo: this.funcionario.cargo,
+      salario: this.funcionario.salario,
+      estadoCivil: this.funcionario.estadoCivil,
+      dataAdmissao: this.funcionario.dataAdmissao,
+      detaDemissao: this.funcionario.dataDemissao,
+      statusFuncionario: this.funcionario.statusFuncionario,
+      endereco: {
+        rua: this.funcionario.endereco.rua,
+        numero: this.funcionario.endereco.numero,
+        complemento: this.funcionario.endereco.complemento,
+        bairro: this.funcionario.endereco.bairro,
+        cidade: this.funcionario.endereco.cidade,
+        estado: this.funcionario.endereco.estado,
+        pais: this.funcionario.endereco.pais
+      }
+    });
   }
 
-  ngAfterViewInit() {
-
+  ngAfterViewInit(): void {
+    super.configurarValidacaoFormularioBase(this.formInputElements, this.editarFuncionarioForm);
+    super.validarFormulario(this.editarFuncionarioForm)
   }
 
   editarFuncionario() {
+    if (this.editarFuncionarioForm.dirty && this.editarFuncionarioForm.valid) {
 
+      this.funcionario = Object.assign({}, this.funcionario, this.editarFuncionarioForm.value);
+
+      this.funcionarioService.atualizarFuncionario(this.funcionario)
+        .subscribe({
+          next: sucesso => { this.processarSucesso(sucesso) },
+          error: falha => { this.processarFalha(falha) }
+        })
+    }
   }
 
-  processarSucesso() {
+  processarSucesso(response: any) {
+    this.errors = [];
 
+    let toast = this.toastr.success('Funcionário atualizado com sucesso!', 'Sucesso');
+    if (toast) {
+      toast.onHidden.subscribe(() => {
+        this.router.navigate(['/funcionario/dash-funcionarios'])
+      });
+    }
   }
 
-  processarFalha() {
-
+  processarFalha(fail: any) {
+    this.errors = fail.error.errors;
+    this.toastr.error('Ocorreu um erro!', 'Opa :(');
   }
 }

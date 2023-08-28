@@ -2,13 +2,14 @@
     <h2 class="text-center">Editar Funcionário</h2>
     <hr>
     <form novalidate (ngSubmit)="editarFuncionario()" [formGroup]="editarFuncionarioForm">
+        <input type="hidden" id="id" name="id" value="">
         <div class="row pt-3">
 
             <div class="col-4 form-group mt-2 p-2">
-                <label class="mx-auto control-label" for="">Nome:</label>
+                <label class="mx-auto control-label">Nome:</label>
                 <div>
                     <input class="form-control" type="text" formControlName="nome" id="nome"
-                        [ngClass]="{'is-invalid': displayMessage.nome }" placeholder="Nome Completo">
+                        [ngClass]="{'is-invalid': displayMessage.nome }">
                     <span class="text-danger" *ngIf="displayMessage.nome">
                         <p class="mb-1" [innerHTML]="displayMessage.nome"></p>
                     </span>
@@ -16,7 +17,7 @@
             </div>
 
             <div class="col-2 form-group mt-2 p-2">
-                <label class="mx-auto control-label" for="">Telefone:</label>
+                <label class="mx-auto control-label">Telefone:</label>
                 <div>
                     <input class="form-control" type="text" formControlName="telefone" id="telefone"
                         [ngClass]="{'is-invalid': displayMessage.telefone }" placeholder="(xx) xxxx-xxxx">
@@ -27,7 +28,7 @@
             </div>
 
             <div class="col-2 form-group mt-2 p-2">
-                <label class="mx-auto control-label" for="">Data de Nascimento:</label>
+                <label class="mx-auto control-label">Data de Nascimento:</label>
                 <div>
                     <input class="form-control" type="date" formControlName="dataNascimento" id="dataNascimento"
                         [ngClass]="{'is-invalid': displayMessage.dataNascimento }">
@@ -38,7 +39,7 @@
             </div>
 
             <div class="col-2 form-group mt-2 p-2">
-                <label class="mx-auto control-label" for="">Nacionalidade:</label>
+                <label class="mx-auto control-label">Nacionalidade:</label>
                 <div>
                     <input class="form-control" type="text" formControlName="nacionalidade" id="nacionalidade"
                         [ngClass]="{'is-invalid': displayMessage.nacionalidade }" placeholder="Ex: Brasileiro">
@@ -163,7 +164,18 @@
                 </div>
             </div>
 
-            <div class="col-2 form-group ms-5 mt-2 p-2">
+            <div class="col-2 form-group mt-2 p-2">
+                <label class="mx-auto control-label" for="">Data de Demissão:</label>
+                <div>
+                    <input class="form-control" type="date" formControlName="dataDemissao" id="dataDemissao"
+                        [ngClass]="{'is-invalid': displayMessage.dataDemissao }">
+                    <span class="text-danger" *ngIf="displayMessage.dataDemissao">
+                        <p class="mb-1" [innerHTML]="displayMessage.dataDemissao"></p>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-2 form-group mt-2 p-2">
                 <label class="mx-auto control-label" for="">Status:</label>
                 <div>
                     <select class="form-select" formControlName="statusFuncionario" id="statusFuncionario"

@@ -29,4 +29,13 @@ export class FuncionarioService extends BaseService {
       .get<Funcionario>(this.UrlServiceV1 + "funcionario/" + id, super.ObterAuthHeaderJson())
       .pipe(catchError(super.serviceError));
   }
+
+  atualizarFuncionario(funcionario: Funcionario): Observable<Funcionario> {
+    return this.http
+      .put(this.UrlServiceV1 + "funcionario/" + funcionario.id, funcionario, super.ObterAuthHeaderJson())
+      .pipe(
+        map(super.extractData),
+        catchError(super.serviceError)
+      )
+  }
 }
