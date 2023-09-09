@@ -5,6 +5,7 @@ import { AdicionarFuncionarioComponent } from './adicionar-funcionario/adicionar
 import { ListarFuncionariosComponent } from './listar-funcionarios/listar-funcionarios.component';
 import { DetalhesFuncionarioComponent } from './detalhes-funcionario/detalhes-funcionario.component';
 import { FuncionarioResolve } from './services/funcionario.resolve';
+import { EditarFuncionarioComponent } from './editar-funcionario/editar-funcionario.component';
 
 const funcionarioRouterConfig: Routes = [
   {
@@ -14,6 +15,12 @@ const funcionarioRouterConfig: Routes = [
       { path: 'dash-funcionarios', component: ListarFuncionariosComponent },
       {
         path: 'detalhes/:id', component: DetalhesFuncionarioComponent,
+        resolve: {
+          funcionario: FuncionarioResolve
+        }
+      },
+      {
+        path: 'editar/:id', component: EditarFuncionarioComponent,
         resolve: {
           funcionario: FuncionarioResolve
         }

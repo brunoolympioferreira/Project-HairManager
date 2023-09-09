@@ -1,0 +1,317 @@
+<div class="container main-container">
+    <h2 class="text-center">Editar Funcionário</h2>
+    <hr>
+    <form novalidate (ngSubmit)="editarFuncionario()" [formGroup]="editarFuncionarioForm">
+        <input type="hidden" id="id" name="id" value="">
+        <div class="row pt-3">
+
+            <div class="col-4 form-group mt-2 p-2">
+                <label class="mx-auto control-label">Nome:</label>
+                <div>
+                    <input class="form-control" type="text" formControlName="nome" id="nome"
+                        [ngClass]="{'is-invalid': displayMessage.nome }">
+                    <span class="text-danger" *ngIf="displayMessage.nome">
+                        <p class="mb-1" [innerHTML]="displayMessage.nome"></p>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-2 form-group mt-2 p-2">
+                <label class="mx-auto control-label">Telefone:</label>
+                <div>
+                    <input class="form-control" type="text" formControlName="telefone" id="telefone"
+                        [ngClass]="{'is-invalid': displayMessage.telefone }" placeholder="(xx) xxxx-xxxx">
+                    <span class="text-danger" *ngIf="displayMessage.telefone">
+                        <p class="mb-1" [innerHTML]="displayMessage.telefone"></p>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-2 form-group mt-2 p-2">
+                <label class="mx-auto control-label">Data de Nascimento:</label>
+                <div>
+                    <input class="form-control" type="datetime" formControlName="dataNascimento" id="dataNascimento"
+                        [ngClass]="{'is-invalid': displayMessage.dataNascimento }">
+                    <span class="text-danger" *ngIf="displayMessage.dataNascimento">
+                        <p class="mb-1" [innerHTML]="displayMessage.dataNascimento"></p>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-2 form-group mt-2 p-2">
+                <label class="mx-auto control-label">Nacionalidade:</label>
+                <div>
+                    <input class="form-control" type="text" formControlName="nacionalidade" id="nacionalidade"
+                        [ngClass]="{'is-invalid': displayMessage.nacionalidade }" placeholder="Ex: Brasileiro">
+                    <span class="text-danger" *ngIf="displayMessage.nacionalidade">
+                        <p class="mb-1" [innerHTML]="displayMessage.nacionalidade"></p>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-2 form-group mt-2 p-2">
+                <label class="mx-auto control-label" for="">CTPS Número:</label>
+                <div>
+                    <input class="form-control" type="text" formControlName="ctpsNumero" id="ctpsNumero"
+                        [ngClass]="{'is-invalid': displayMessage.ctpsNumero }" placeholder="Número CTPS">
+                    <span class="text-danger" *ngIf="displayMessage.ctpsNumero">
+                        <p class="mb-1" [innerHTML]="displayMessage.ctpsNumero"></p>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-2 form-group mt-2 p-2">
+                <label class="mx-auto control-label" for="">CTPS Série:</label>
+                <div>
+                    <input class="form-control" type="text" formControlName="ctpsSerie" id="ctpsSerie"
+                        [ngClass]="{'is-invalid': displayMessage.ctpsSerie }" placeholder="Série CTPS">
+                    <span class="text-danger" *ngIf="displayMessage.ctpsSerie">
+                        <p class="mb-1" [innerHTML]="displayMessage.ctpsSerie"></p>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-2 form-group mt-2 p-2">
+                <label class="mx-auto control-label" for="">CPF:</label>
+                <div>
+                    <input class="form-control" type="text" formControlName="cpf" id="cpf"
+                        [ngClass]="{'is-invalid': displayMessage.cpf }" placeholder="CPF do funcionário">
+                    <span class="text-danger" *ngIf="displayMessage.cpf">
+                        <p class="mb-1" [innerHTML]="displayMessage.cpf"></p>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-2 form-group mt-2 p-2">
+                <label class="mx-auto control-label" for="">RG:</label>
+                <div>
+                    <input class="form-control" type="text" formControlName="rg" id="rg"
+                        [ngClass]="{'is-invalid': displayMessage.rg }" placeholder="RG do funcionário">
+                    <span class="text-danger" *ngIf="displayMessage.rg">
+                        <p class="mb-1" [innerHTML]="displayMessage.rg"></p>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-2 form-group mt-2 p-2">
+                <label class="mx-auto control-label" for="">PIS:</label>
+                <div>
+                    <input class="form-control" type="text" formControlName="pis" id="pis"
+                        [ngClass]="{'is-invalid': displayMessage.pis }" placeholder="PIS do funcionário">
+                    <span class="text-danger" *ngIf="displayMessage.pis">
+                        <p class="mb-1" [innerHTML]="displayMessage.pis"></p>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-2 form-group ms-5 mt-2 p-2">
+                <label class="mx-auto control-label" for="">Reservista:</label>
+                <div>
+                    <input class="form-control" type="text" formControlName="reservista" id="reservista"
+                        [ngClass]="{'is-invalid': displayMessage.reservista }" placeholder="Reservista do funcionário">
+                    <span class="text-danger" *ngIf="displayMessage.reservista">
+                        <p class="mb-1" [innerHTML]="displayMessage.reservista"></p>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-2 form-group mt-2 p-2">
+                <label class="mx-auto control-label" for="">Cargo:</label>
+                <div>
+                    <input class="form-control" type="text" formControlName="cargo" id="cargo"
+                        [ngClass]="{'is-invalid': displayMessage.cargo }" placeholder="Ex: Cabelereiro">
+                    <span class="text-danger" *ngIf="displayMessage.cargo">
+                        <p class="mb-1" [innerHTML]="displayMessage.cargo"></p>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-2 form-group mt-2 p-2">
+                <label class="mx-auto control-label" for="">Salário:</label>
+                <div>
+                    <input class="form-control" type="number" formControlName="salario" id="salario"
+                        [ngClass]="{'is-invalid': displayMessage.salario }" placeholder="R$">
+                    <span class="text-danger" *ngIf="displayMessage.salario">
+                        <p class="mb-1" [innerHTML]="displayMessage.salario"></p>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-2 form-group mt-2 p-2">
+                <label class="mx-auto control-label" for="">Estado Civil:</label>
+                <div>
+                    <select class="form-select" formControlName="estadoCivil" id="estadoCivil"
+                        [ngClass]="{'is-invalid': displayMessage.estadoCivil}" aria-label="Default select example">
+                        <option value="">Estado Civil</option>
+                        <option value="Solteiro">Solteiro(a)</option>
+                        <option value="Casado">Casado(a)</option>
+                        <option value="Divorciado">Divorciado(a)</option>
+                    </select>
+                    <span class="text-danger" *ngIf="displayMessage.estadoCivil">
+                        <p class="mb-1" [innerHTML]="displayMessage.estadoCivil"></p>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-2 form-group mt-2 p-2">
+                <label class="mx-auto control-label" for="">Data de Admissão:</label>
+                <div>
+                    <input class="form-control" type="datetime" formControlName="dataAdmissao" id="dataAdmissao"
+                        [ngClass]="{'is-invalid': displayMessage.dataAdmissao }">
+                    <span class="text-danger" *ngIf="displayMessage.dataAdmissao">
+                        <p class="mb-1" [innerHTML]="displayMessage.dataAdmissao"></p>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-2 form-group mt-2 p-2">
+                <label class="mx-auto control-label" for="">Data de Demissão:</label>
+                <div>
+                    <input class="form-control" type="date" formControlName="dataDemissao" id="dataDemissao"
+                        [ngClass]="{'is-invalid': displayMessage.dataDemissao }">
+                    <span class="text-danger" *ngIf="displayMessage.dataDemissao">
+                        <p class="mb-1" [innerHTML]="displayMessage.dataDemissao"></p>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-2 form-group mt-2 p-2">
+                <label class="mx-auto control-label" for="">Status:</label>
+                <div>
+                    <select class="form-select" formControlName="statusFuncionario" id="statusFuncionario"
+                        [ngClass]="{'is-invalid': displayMessage.status}" aria-label="Default select example">
+                        <option value="">Status</option>
+                        <option value="Ativo">Ativo(a)</option>
+                        <option value="Afastado">Afastado(a)</option>
+                        <option value="Ferias">Férias(a)</option>
+                        <option value="Demitido">Demitido(a)</option>
+                    </select>
+                    <span class="text-danger" *ngIf="displayMessage.statusFuncionario">
+                        <p class="mb-1" [innerHTML]="displayMessage.statusFuncionario"></p>
+                    </span>
+
+                </div>
+            </div>
+
+            <h3 class="text-center">Editar Endereço</h3>
+            <hr>
+
+            <div formGroupName="endereco" class="row pt-3">
+                <div class="col-4 form-group mt-2 p-2">
+                    <label class="mx-auto control-label" for="">Rua/Avenida:</label>
+                    <div>
+                        <input class="form-control" type="text" formControlName="rua" id="rua"
+                            [ngClass]="{'is-invalid': displayMessage.rua }" placeholder="Rua/Avenida">
+                        <span class="text-danger" *ngIf="displayMessage.rua">
+                            <p class="mb-1" [innerHTML]="displayMessage.rua"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-2 form-group mt-2 p-2">
+                    <label class="mx-auto control-label" for="">Número</label>
+                    <div>
+                        <input class="form-control" type="text" formControlName="numero" id="numero"
+                            [ngClass]="{'is-invalid': displayMessage.numero }" placeholder="Número">
+                        <span class="text-danger" *ngIf="displayMessage.numero">
+                            <p class="mb-1" [innerHTML]="displayMessage.numero"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-4 form-group mt-2 p-2">
+                    <label class="mx-auto control-label" for="">Complemento</label>
+                    <div>
+                        <input class="form-control" type="text" formControlName="complemento" id="complemento"
+                            placeholder="Complemento">
+                    </div>
+                </div>
+
+                <div class="col-4 form-group mt-2 p-2">
+                    <label class="mx-auto control-label" for="">Bairro</label>
+                    <div>
+                        <input class="form-control" type="text" formControlName="bairro" id="bairro"
+                            [ngClass]="{'is-invalid': displayMessage.bairro }" placeholder="Bairro">
+                        <span class="text-danger" *ngIf="displayMessage.bairro">
+                            <p class="mb-1" [innerHTML]="displayMessage.bairro"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-4 form-group mt-2 p-2">
+                    <label class="mx-auto control-label" for="">Cidade</label>
+                    <div>
+                        <input class="form-control" type="text" formControlName="cidade" id="cidade"
+                            [ngClass]="{'is-invalid': displayMessage.cidade }" placeholder="Cidade">
+                        <span class="text-danger" *ngIf="displayMessage.cidade">
+                            <p class="mb-1" [innerHTML]="displayMessage.cidade"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-2 form-group mt-2 p-2">
+                    <label class="control-label">Estado</label>
+                    <div>
+                        <select class="form-select" id="estado" formControlName="estado"
+                            [ngClass]="{'is-invalid': displayMessage.estado}">
+                            <option value="">Estado</option>
+                            <option value="AC">Acre</option>
+                            <option value="AL">Alagoas</option>
+                            <option value="AP">Amapá</option>
+                            <option value="AM">Amazonas</option>
+                            <option value="BA">Bahia</option>
+                            <option value="CE">Ceará</option>
+                            <option value="DF">Distrito Federal</option>
+                            <option value="ES">Espírito Santo</option>
+                            <option value="GO">Goiás</option>
+                            <option value="MA">Maranhão</option>
+                            <option value="MT">Mato Grosso</option>
+                            <option value="MS">Mato Grosso do Sul</option>
+                            <option value="MG">Minas Gerais</option>
+                            <option value="PA">Pará</option>
+                            <option value="PB">Paraíba</option>
+                            <option value="PR">Paraná</option>
+                            <option value="PE">Pernambuco</option>
+                            <option value="PI">Piauí</option>
+                            <option value="RJ">Rio de Janeiro</option>
+                            <option value="RN">Rio Grande do Norte</option>
+                            <option value="RS">Rio Grande do Sul</option>
+                            <option value="RO">Rondônia</option>
+                            <option value="RR">Roraima</option>
+                            <option value="SC">Santa Catarina</option>
+                            <option value="SP">São Paulo</option>
+                            <option value="SE">Sergipe</option>
+                            <option value="TO">Tocantins</option>
+                        </select>
+                        <span class="text-danger" *ngIf="displayMessage.estado">
+                            <p class="mb-1" [innerHTML]="displayMessage.estado"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-2 form-group mt-2 p-2">
+                    <label class="mx-auto control-label" for="">País</label>
+                    <div>
+                        <input class="form-control" type="text" formControlName="pais" id="pais"
+                            [ngClass]="{'is-invalid': displayMessage.pais }" placeholder="País">
+                        <span class="text-danger" *ngIf="displayMessage.pais">
+                            <p class="mb-1" [innerHTML]="displayMessage.pais"></p>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group mt-2 p-2">
+                    <div class="col-md-4 col-md-offset-2">
+                        <span><button class="btn btn-success" id="Editar" [disabled]="!editarFuncionarioForm.valid"
+                                type="submit">Atualizar</button></span>
+                        <a class="btn btn-info ms-2" [routerLink]="['/funcionario/dash-funcionarios']">Voltar</a>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </form>
+</div>
