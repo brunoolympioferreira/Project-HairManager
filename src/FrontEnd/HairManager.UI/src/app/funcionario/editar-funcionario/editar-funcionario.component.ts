@@ -6,6 +6,7 @@ import { FormBuilder, FormControlName, FormGroup, Validators } from '@angular/fo
 import { FormBaseComponent } from 'src/app/base/form-base-component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-editar-funcionario',
@@ -112,7 +113,7 @@ export class EditarFuncionarioComponent extends FormBaseComponent implements OnI
       reservista: [{ value: '', disabled: true }, [Validators.required]],
       cargo: ['', [Validators.required]],
       salario: [Number, [Validators.required]],
-      estadoCivil: [Number, [Validators.required]],
+      estadoCivil: [0],
       dataAdmissao: [{ value: Date, disabled: true }, [Validators.required]],
       dataDemissao: [Date],
       statusFuncionario: [Number, [Validators.required]],
@@ -145,7 +146,7 @@ export class EditarFuncionarioComponent extends FormBaseComponent implements OnI
       salario: this.funcionario.salario,
       estadoCivil: this.funcionario.estadoCivil,
       dataAdmissao: this.funcionario.dataAdmissao,
-      detaDemissao: this.funcionario.dataDemissao,
+      dataDemissao: this.funcionario.dataDemissao,
       statusFuncionario: this.funcionario.statusFuncionario,
       endereco: {
         rua: this.funcionario.endereco.rua,
@@ -158,6 +159,8 @@ export class EditarFuncionarioComponent extends FormBaseComponent implements OnI
       }
     });
   }
+
+
 
   ngAfterViewInit(): void {
     super.configurarValidacaoFormularioBase(this.formInputElements, this.editarFuncionarioForm);

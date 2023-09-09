@@ -4,6 +4,7 @@ using HairManager.Comunication.Enums;
 namespace HairManager.Comunication.Responses;
 public class ResponseFuncionarioDetalhesDTO
 {
+    public long Id { get; set; }
     public string Nome { get; set; }
     public string Telefone { get; set; }
     public DateTime DataNascimento { get; set; }
